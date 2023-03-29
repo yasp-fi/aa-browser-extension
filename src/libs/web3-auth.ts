@@ -3,10 +3,10 @@ import { CHAIN_NAMESPACES } from '@web3auth/base';
 import { SafeAuthConfig, SafeAuthKit } from '@safe-global/auth-kit';
 import { argumentIsMissing } from '../utils/argument-is-missing';
 import Web3AuthAdapter from '@safe-global/auth-kit/dist/src/adapters/Web3AuthAdapter';
-// import { Web3Provider } from '@ethersproject/providers';
-// import { ethers } from 'ethers';
-// import EthersAdapter from '@safe-global/safe-ethers-lib';
-// import { SafeFactory } from '@safe-global/safe-core-sdk';
+import { Web3Provider } from '@ethersproject/providers';
+import { ethers } from 'ethers';
+import EthersAdapter from '@safe-global/safe-ethers-lib';
+import { SafeFactory } from '@safe-global/safe-core-sdk';
 
 const { WEB3_AUTH_CLIENT_ID: clientId = argumentIsMissing('WEB3_AUTH_CLIENT_ID') } = process.env;
 
@@ -41,16 +41,15 @@ export const authKit = new SafeAuthKit(
   SAFE_AUTH_CONFIG
 );
 
-// export const getFactory = async () => {
-//   const provider = authKit.getProvider();
-//   if (!provider) {
-//     throw new Error('Please auth');
-//   }
+export const getFactory = async () => {
+  const provider = authKit.getProvider();
+  if (!provider) {
+    throw new Error('Please auth');
+  }
+  const ethAdapter = new EthersAdapter({
+    ethers: ethers as any,
+    signerOrProvider: new Web3Provider(provider),
+  });
 
-//   const ethAdapter = new EthersAdapter({
-//     ethers: ethers as any,
-//     signerOrProvider: new Web3Provider(provider),
-//   });
-
-//   return SafeFactory.create({ ethAdapter: ethAdapter })
-// };
+  return SafeFactory.create({ ethAdapter: ethAdapter })
+};

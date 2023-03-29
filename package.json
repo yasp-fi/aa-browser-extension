@@ -54,6 +54,7 @@
     "@web3auth/no-modal": "^5.1.0",
     "@web3auth/openlogin-adapter": "^5.1.0",
     "classnames": "^2.2.6",
+    "contract-proxy-kit": "^3.0.0",
     "core-js": "^3.3.3",
     "ethers": "^6.2.3",
     "lodash.omit": "^4.5.0",
