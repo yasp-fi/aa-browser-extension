@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "YaspFi",
+  "description": "With YaspFi you can store, invest and exchange your funds on multiple networks without ever worrying about losing access. Yasp.Fi provides comprehensive analytics and risk assessment score to help users make data-based investment decisions. Our mission is to make decentralized finance more user-friendly, transparent, and accessible to a wider audience.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "alarms",
+    "tabs"
+  ],
+  "minimum_chrome_version": "100",
+  "default_locale": "en",
+  "options_ui": {
+    "page": "options.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "all_frames": false,
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "assets/img/yasp-fi-16.png",
+    "32": "assets/img/yasp-fi-32.png",
+    "48": "assets/img/yasp-fi-48.png",
+    "128": "assets/img/yasp-fi-128.png"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src ws://localhost:*/",
+  "web_accessible_resources": ["assets/img/*"]
+}
