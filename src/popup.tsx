@@ -9,7 +9,7 @@ import { h } from 'preact';
 
 import {defaultTheme} from './themes/default';
 import {GlobalStyle} from './constants/style';
-import {OnboardingScreen, StartScreen} from './screens';
+import {OnboardingScreen, OverviewScreen, StartScreen} from './screens';
 
 const currentLocation = () => {
     return window.location.hash.replace(/^#/, "") || "/";
@@ -46,6 +46,11 @@ const Popup = () => {
             <Route
                 path={'/'}
                 component={StartScreen}
+            />
+
+            <Route
+                path={'/overview'}
+                component={OverviewScreen}
             />
         </Router>
     </ThemeProvider>
