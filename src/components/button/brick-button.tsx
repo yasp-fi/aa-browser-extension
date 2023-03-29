@@ -7,19 +7,28 @@ type ButtonProps = {
     disabled?: boolean;
     width?: string | number;
     height?: string | number;
+
+    justifyContent?: string;
+    alignItems?: string;
+    flexDirection?: string;
+
+
+    margin?: string;
+
     children: any;
 };
 
 const BrickButton = styled.button<ButtonProps>`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: ${({ flexDirection }) => (flexDirection ? flexDirection : 'row')};
+  justify-content: ${({ justifyContent }) => (justifyContent ? justifyContent : 'center')}; 
+  align-items: ${({ alignItems }) => (alignItems ? alignItems : 'center')}; 
   padding: 16px 24px;
   gap: 8px;
   width: ${({ width }) => (width ? `${width}` : 'auto')};
-  height: ${({ height }) => (height ? `${height}px` : 'auto')};
+  height: ${({ height }) => (height ? `${height}` : 'auto')};
   border-radius: 12px;
+  margin: ${({ margin }) => (margin ? `${margin}` : '0')};
   cursor: pointer;
   transition: all 0.3s ease;
   outline: none;

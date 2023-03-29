@@ -1,7 +1,7 @@
 import React from 'react';
-import { h } from 'preact';
 import styled from 'styled-components';
-import { useTheme } from 'styled-components';
+import {h} from 'preact';
+import {useTheme} from 'styled-components';
 
 import {ScreenLayout} from 'components/layout/screen-layout';
 import {DescriptionTypography, TitleTypography, HighlightedText, ActionText} from 'components/typography';
@@ -12,6 +12,7 @@ import bg from 'assets/screen-squares-bg.png';
 import firstStepImg from 'assets/onboarding-1.png';
 import BrickButton from 'components/button/brick-button';
 import {OnboardingCarousel} from './onboarding-carousel';
+import {useLocation} from 'wouter-preact';
 
 
 type StepProps = {
@@ -49,11 +50,13 @@ const GetStartedStep: React.FC<StepProps> = ({ onNext }) => {
 
 
 
-const CarouselStep: React.FC<StepProps> = () => {
+const OnboardingCarouselStep: React.FC<StepProps> = () => {
+    const [location, setLocation] = useLocation();
+
     return (
         <OnboardingLayout>
             <Column padding={'20px'}>
-                <OnboardingCarousel />
+                <OnboardingCarousel onGetStartedClick={() => setLocation('/start')} />
             </Column>
         </OnboardingLayout>
     )
@@ -66,7 +69,7 @@ export const OnboardingScreen: React.FC = () => {
     return (
         <React.Fragment>
             {step === 0 ? <GetStartedStep onNext={() => setStep(1)} /> : null}
-            {step === 1 ? <CarouselStep onNext={() => setStep(0)} /> : null}
+            {step === 1 ? <OnboardingCarouselStep onNext={() => setStep(0)} /> : null}
         </React.Fragment>
     )
 };

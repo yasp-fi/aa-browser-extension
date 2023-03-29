@@ -11,8 +11,10 @@ import investmentsImage from 'assets/onboarding-2.png';
 import dataBasedDecisionImage from 'assets/onboarding-3.png';
 import metaDexImage from 'assets/onboarding-4.png';
 import multiChainImage from 'assets/onboarding-5.png';
+
 import {ActionText, DescriptionTypography, TitleTypography} from 'components/typography';
 import BrickButton from 'components/button/brick-button';
+import styled from 'styled-components';
 
 const renderCustomIndicator = (
     clickHandler: (e: unknown) => void,
@@ -40,13 +42,17 @@ const carouselHeaders: [string, string, string, string] = [
 
 const carouselDescriptions: [string, string, string, string] = [
     'Put your coins into DeFi investments, automated smart-contracts do the rest.',
-    // TODO: FIX THIS TEST
-    'Risk Score is really good...',
+    'At Yasp.Fi, your investment security is our top priority. The risk score ranges from A+ to C-, with A+ being the safest.',
     'Discover a new level of trading efficiency with our Meta DEX aggregator support.\n',
     'Unleash the full potential of your crypto portfolio with our multi-chain solution.',
 ]
 
-export const OnboardingCarousel = () => {
+
+type OnboardingCarouselProps = {
+    onGetStartedClick: () => void;
+}
+
+export const OnboardingCarousel: React.FC<OnboardingCarouselProps> = ({ onGetStartedClick }) => {
     const [selectedIndex, setSelectedIndex] = React.useState(0);
 
     const handleSlideChange = (index: number) => {
@@ -70,11 +76,10 @@ export const OnboardingCarousel = () => {
                 showStatus={false}
                 showThumbs={false}
                 showIndicators
-                infiniteLoop
                 interval={5000}
                 renderIndicator={renderCustomIndicator}
                 onChange={handleSlideChange}
-                dynamicHeight={true}
+                dynamicHeight={false}
                 autoPlay={false}
                 stopOnHover
                 swipeable
@@ -101,18 +106,23 @@ export const OnboardingCarousel = () => {
                         alt={'Get Started onboarding image about Meta DEX Aggreggator'}
                     />
                 </Column>
-                <Column alignItems={'center'} justifyContent={'center'}>
+                <Column alignItems={'center'}>
+                    <GetStartedButtonLayout onClick={onGetStartedClick} width={'100%'} height={'56px'} filled>
+                        <ActionText>Get Started</ActionText>
+                    </GetStartedButtonLayout>
                     <img
                         width={'100%'}
                         src={multiChainImage}
                         alt={'Get Started onboarding image about Meta DEX Aggreggator'}
                     />
 
-                    <BrickButton width={'100%'} filled>
-                        <ActionText>Get Started</ActionText>
-                    </BrickButton>
                 </Column>
             </Carousel>
         </Column>
     )
 }
+
+
+const GetStartedButtonLayout = styled(BrickButton)`
+    margin-top: 20px;
+`;

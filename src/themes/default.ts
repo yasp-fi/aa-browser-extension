@@ -5,6 +5,7 @@ export const defaultTheme = {
   palette: {
     background: '#171D25',
     secondary: '#FFFFFF',
+    gray: '#7D7D7D',
     pink: '#ff8bb3',
     blue: '#0085ff',
     hoverBlue: '#1991ff',
