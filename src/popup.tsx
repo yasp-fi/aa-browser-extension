@@ -6,9 +6,15 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from './themes/default';
 import { GlobalStyle } from './constants/style';
-import {usePriceQuotesTrigger} from "./store /use-price-quotes-store";
-import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
-import { OnboardingScreen, OverviewScreen, ReceiveCoinListScreen, SendScreen, StartScreen } from './screens';
+import {
+  ReceiveCoinListScreen,
+  OnboardingScreen,
+  OverviewScreen,
+  SendScreen,
+  StartScreen,
+} from './screens';
+import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import { usePriceQuotesTrigger } from "./store /use-price-quotes-store";
 
 
 const router = createMemoryRouter(
