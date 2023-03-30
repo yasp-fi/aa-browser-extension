@@ -13,19 +13,21 @@ import {Bold16x24} from 'components/typography';
 
 import {hashHistory} from '../../constants/hash-history';
 import {CoinProperties, ENABLED_EVM_ASSETS} from '../../constants/enabled-assets-temporary';
+import { useNavigate } from 'react-router';
 
 
 export const SendScreen: React.FC = () => {
     const [selectCoinPanIsOpened, setSelectCoinPanIsOpened] = React.useState<boolean>(false);
     const [sendCoinSelected, setSendCoinSelected] = React.useState<CoinProperties>(ENABLED_EVM_ASSETS[0]);
     const [sendAmountValue, setSendAmountValue] = React.useState<string>('0.00');
+    const navigate = useNavigate();
 
     const [destinationAddressValue, setDestinationAddressValue] = React.useState<string>('');
 
     return (
         <SendScreenLayout>
             <Column gap={'16px'}>
-                <InnerPageTitle onBackClick={hashHistory.back} title={'Send'}/>
+                <InnerPageTitle onBackClick={() => navigate('/overview')} title={'Send'}/>
                 <SendInput
                     sendAmountValue={sendAmountValue}
                     setSendAmountValue={setSendAmountValue}

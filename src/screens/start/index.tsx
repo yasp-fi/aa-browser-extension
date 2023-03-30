@@ -15,7 +15,7 @@ import twitterLogo from 'assets/third-parties/twitter.svg';
 import facebookLogo from 'assets/third-parties/facebook.svg';
 import { AuthStatus, LoginProviders, useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 import Loader from '../../components/loader';
-import { router } from '../../components/router';
+import { useNavigate } from 'react-router';
 
 export const LoginScreen = (props: {
   login: (provider: LoginProviders) => void | Promise<void>;
@@ -65,9 +65,10 @@ export const LoginScreen = (props: {
 
 export const StartScreen: React.FC = () => {
   const { login, status } = useWeb3Auth();
+  const navigate = useNavigate();
 
   if (status === AuthStatus.Connected) {
-    router.navigate('/overview');
+    navigate('/overview');
   }
 
   const notConnected = status === AuthStatus.NotConnected;

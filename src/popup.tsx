@@ -7,10 +7,25 @@ import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from './themes/default';
 import { GlobalStyle } from './constants/style';
 import {usePriceQuotesTrigger} from "./store /use-price-quotes-store";
-import { YaspRouter } from './components/router';
+import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
+import { OnboardingScreen, OverviewScreen, ReceiveCoinListScreen, SendScreen, StartScreen } from './screens';
 
 
+const router = createMemoryRouter(
+  createRoutesFromElements(
+    <React.Fragment>
+      <Route path={'/onboarding'} Component={OnboardingScreen} />
 
+      <Route path={'/'} Component={StartScreen} />
+
+      <Route path={'/send'} Component={SendScreen} />
+
+      <Route path={'/receive'} Component={ReceiveCoinListScreen} />
+
+      <Route path={'/overview'} Component={OverviewScreen} />
+    </React.Fragment>
+  )
+);
 
 const TriggerHooks: React.FC = () => {
     usePriceQuotesTrigger()
@@ -22,7 +37,7 @@ const Popup: React.FC = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
-      <YaspRouter />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };
