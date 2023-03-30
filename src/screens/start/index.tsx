@@ -13,7 +13,7 @@ import googleLogo from 'assets/third-parties/google.svg';
 import discordLogo from 'assets/third-parties/discord.svg';
 import twitterLogo from 'assets/third-parties/twitter.svg';
 import facebookLogo from 'assets/third-parties/facebook.svg';
-import { LoginProviders, useWeb3Auth } from '../../hooks/use-web3-auth';
+import { LoginProviders, useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 
 export const StartScreen: React.FC = () => {
   const { provider, login } = useWeb3Auth();

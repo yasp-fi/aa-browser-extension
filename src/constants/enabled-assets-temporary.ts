@@ -61,3 +61,6 @@ export const ENABLED_EVM_ASSETS: CoinProperties[] = [
         'onChainAddress': '0x65aFADD39029741B3b8f0756952C74678c9cEC93',
     }
 ];
+
+
+export const ENABLED_EVM_ASSETS_TICKERS = ENABLED_EVM_ASSETS.map((asset) => asset.symbol);

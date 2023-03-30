@@ -10,7 +10,6 @@ import receiveSvg from 'assets/icons/add.svg';
 import buySvg from 'assets/icons/credit-card.svg';
 import swapSvg from 'assets/icons/trade.svg';
 import sendSvg from 'assets/icons/send.svg';
-import {hashHistory} from "../../constants/hash-history";
 
 type ActionProps = {
   roundButtonIconSrc: string;

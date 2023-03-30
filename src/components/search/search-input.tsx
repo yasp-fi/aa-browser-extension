@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import useDebounce from '../../hooks/use-debounce';
+import useDebounce from '../../libs/hooks/use-debounce';
 
 const Input = styled.input`
   background-color: transparent;

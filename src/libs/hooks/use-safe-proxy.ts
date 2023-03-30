@@ -1,7 +1,7 @@
 import CPK, { EthersAdapter } from 'contract-proxy-kit';
 import { ethers, JsonRpcSigner, Wallet } from 'ethers';
 import { useState, useLayoutEffect } from 'react';
-import { Status } from '../utils/status';
+import { Status } from '../../utils/status';
 
 const createProxySafe = async (signer: JsonRpcSigner | Wallet) => {
   const ethLibAdapter = new EthersAdapter({ ethers, signer });

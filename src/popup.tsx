@@ -14,6 +14,7 @@ import {
   StartScreen,
 } from './screens';
 import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
+import {usePriceQuotesTrigger} from "./store /use-price-quotes-store";
 
 
 const router = createMemoryRouter(
@@ -34,7 +35,13 @@ const router = createMemoryRouter(
 
 
 
-const Popup = () => {
+const TriggerHooks: React.FC = () => {
+    usePriceQuotesTrigger()
+    return null
+}
+
+
+const Popup: React.FC = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle />
