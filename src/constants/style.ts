@@ -12,9 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 350px;
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      height: 0px;
+      background-color: transparent;
+    }
   }
 
   a {
     text-decoration: none;
   }
-` 
+`;
