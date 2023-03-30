@@ -11,16 +11,13 @@ export const GlobalStyle = createGlobalStyle`
     font-style: normal;
     margin: 0;
     padding: 0;
-    width: 350px;
 
     ::-webkit-scrollbar {
       width: 0px;
       height: 0px;
       background-color: transparent;
     }
-  }
-
-  a {
-    text-decoration: none;
-  }
+    
+    width: 100%;
+    height: 100%;
 `;
