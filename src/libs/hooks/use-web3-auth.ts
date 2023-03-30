@@ -1,8 +1,8 @@
 import { CHAIN_NAMESPACES, EVM_ADAPTERS, SafeEventEmitterProvider } from '@web3Auth/base';
-import { SafeAuthKit, SafeAuthProviderType } from '@safe-global/auth-kit';
+import { Web3AuthNoModal } from '@web3auth/no-modal';
 import { useEffect, useState } from 'react';
-import Safe from '@safe-global/safe-core-sdk';
-import { BrowserProvider } from 'ethers';
+import { BrowserProvider, Wallet } from 'ethers';
+import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 
 export enum LoginProviders {
   Google = 'google',
@@ -30,45 +30,91 @@ const OPTIONS = {
   enableLogging: false,
 };
 
+const buildWeb3Auth = () => {
+  const auth = new Web3AuthNoModal({
+    clientId,
+    chainConfig: {
+      chainNamespace: CHAIN_NAMESPACES.EIP155,
+      chainId: '0x5',
+      rpcTarget: 'https://rpc.ankr.com/eth_goerli',
+    },
+    web3AuthNetwork: 'testnet',
+  });
+
+  const openloginAdapter = new OpenloginAdapter();
+  auth.configureAdapter(openloginAdapter);
+  return auth;
+};
+
+export enum AuthStatus {
+  Loading,
+  NotConnected,
+  Connected
+}
+
 export const useWeb3Auth = () => {
-  const [authKit, setAuthKit] = useState<SafeAuthKit | null>(null);
-  const [provider, setProvider] = useState<BrowserProvider | null>(null);
+  const [web3Auth, setWeb3Auth] = useState<Web3AuthNoModal | null>(null);
+  const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null);
+  const [wallet, setWallet] = useState<Wallet | null>(null);
+  const [status, setStatus] = useState<AuthStatus>(AuthStatus.Loading);
 
   useEffect(() => {
     const initWeb3Auth = async (): Promise<void> => {
-      const authKit_ = await SafeAuthKit.init(SafeAuthProviderType.Web3Auth, {
-        chainId: '0x5',
-        authProviderConfig: {
-          clientId, // Add your client id. Get it from the Web3Auth dashboard
-          rpcTarget: 'https://rpc.ankr.com/eth_goerli', // Add your RPC e.g. https://goerli.infura.io/v3/<your project id>
-          network: 'testnet', // The network to use for the Web3Auth modal. Use 'testnet' while developing and 'mainnet' for production use
-          theme: 'dark', // The theme to use for the Web3Auth modal
-        },
-      });
+      const auth = buildWeb3Auth();
+      setWeb3Auth(auth);
+      await auth.init();
 
-      if (!authKit_) {
-      throw new Error('13123')
+      if (auth.provider) {
+        setProvider(auth.provider);
+        setStatus(AuthStatus.Connected);
+      } else {
+        setStatus(AuthStatus.NotConnected);
       }
-        setAuthKit(authKit_);
     };
 
     initWeb3Auth().catch(e => console.error(e));
   }, []);
 
-  const login = async () => {
-    if (!authKit) {
-      throw new Error("Auth kit is not initialized")
-    }
-    return authKit.signIn();
-  }
+  useEffect(() => {
+    const initWallet = async () => {
+      const privateKey = await provider!.request<string>({
+        method: 'eth_private_key',
+      });
 
+      const browserProvider = new BrowserProvider(provider!);
+      setWallet(new Wallet(privateKey!).connect(browserProvider));
+    };
+
+    if (provider) {
+      initWallet().catch(e => console.error(e));
+    }
+  }, [provider]);
+
+  const login = async (loginProvider: LoginProviders) => {
+    if (!web3Auth) {
+      throw new Error('Auth kit is not initialized');
+    }
+    setStatus(AuthStatus.Loading);
+
+    if (web3Auth.provider) {
+      await logout();
+    }
+    const authProvider = await web3Auth.connectTo(EVM_ADAPTERS.OPENLOGIN, {
+      loginProvider: loginProvider,
+    });
+
+    setProvider(authProvider);
+    setStatus(AuthStatus.Connected);
+  };
 
   const logout = async () => {
-    if (!authKit) {
-      throw new Error("Auth kit is not initialized")
+    if (!web3Auth) {
+      throw new Error('Auth kit is not initialized');
     }
-    return authKit.signOut();
-  }
+    await web3Auth.logout();
+    setProvider(null);
+    setStatus(AuthStatus.NotConnected);
+  };
 
-  return { authKit, login, logout, provider };
+  return { login, logout, wallet, status, provider };
 };

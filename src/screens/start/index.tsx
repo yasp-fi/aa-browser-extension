@@ -13,54 +13,72 @@ import googleLogo from 'assets/third-parties/google.svg';
 import discordLogo from 'assets/third-parties/discord.svg';
 import twitterLogo from 'assets/third-parties/twitter.svg';
 import facebookLogo from 'assets/third-parties/facebook.svg';
-import { LoginProviders, useWeb3Auth } from '../../libs/hooks/use-web3-auth';
+import { AuthStatus, LoginProviders, useWeb3Auth } from '../../libs/hooks/use-web3-auth';
+import Loader from '../../components/loader';
+import { router } from '../../components/router';
+
+export const LoginScreen = (props: {
+  login: (provider: LoginProviders) => void | Promise<void>;
+}) => {
+  const { login } = props;
+
+  return (
+    <>
+      <BrickButton
+        margin={'12px 0 0 0'}
+        width={'100%'}
+        height={'109px'}
+        alignItems={'flex-start'}
+        justifyContent={'flex-start'}
+        flexDirection={'column'}
+        filled
+      >
+        <Bold18x27>Create new wallet</Bold18x27>
+        <Medium14x21 textAlign={'left'}>
+          12/24 words separated <br />
+          by spaces.
+        </Medium14x21>
+      </BrickButton>
+
+      <OrText textAlign={'center'}>Or sign in with</OrText>
+      {/* <ErrorText textAlign={'center'}>{provider && 'Signed'}</ErrorText> */}
+
+      <Row gap={'24px'} alignItems={'center'} justifyContent={'center'}>
+        <RoundButton onClick={() => login(LoginProviders.Google)}>
+          <img width={36} height={36} src={googleLogo} alt={'Google Logo'} />
+        </RoundButton>
+        <RoundButton onClick={() => login(LoginProviders.Discord)}>
+          <img width={32} height={32} src={discordLogo} alt={'Discord Logo'} />
+        </RoundButton>
+
+        <RoundButton onClick={() => login(LoginProviders.Twitter)}>
+          <img width={32} height={26.32} src={twitterLogo} alt={'Twitter Logo'} />
+        </RoundButton>
+
+        <RoundButton onClick={() => login(LoginProviders.Facebook)}>
+          <img width={36} height={36} src={facebookLogo} alt={'Facebook Logo'} />
+        </RoundButton>
+      </Row>
+    </>
+  );
+};
 
 export const StartScreen: React.FC = () => {
-  const { provider, login } = useWeb3Auth();
+  const { login, status } = useWeb3Auth();
+
+  if (status === AuthStatus.Connected) {
+    router.navigate('/overview');
+  }
+
+  const notConnected = status === AuthStatus.NotConnected;
 
   return (
     <StartScreenLayout>
       <Column gap={'16px'} padding={'20px'} alignItems={'center'} justifyContent={'center'}>
         <img src={yaspLogo} width={60.29} height={47.85} alt={'Yasp Logo Image'} />
 
-        <WelcomeText>Welcome</WelcomeText>
-
-        <BrickButton
-          margin={'12px 0 0 0'}
-          width={'100%'}
-          height={'109px'}
-          alignItems={'flex-start'}
-          justifyContent={'flex-start'}
-          flexDirection={'column'}
-          filled
-        >
-          <Bold18x27>Create new wallet</Bold18x27>
-          <Medium14x21 textAlign={'left'}>
-            12/24 words separated <br />
-            by spaces.
-          </Medium14x21>
-        </BrickButton>
-
-        <OrText textAlign={'center'}>Or sign in with</OrText>
-        <ErrorText textAlign={'center'}>{provider ? 'Signed' : '??'}</ErrorText>
-
-        <Row gap={'24px'} alignItems={'center'} justifyContent={'center'}>
-          <RoundButton onClick={() => login()}>
-            <img width={36} height={36} src={googleLogo} alt={'Google Logo'} />
-          </RoundButton>
-          {/* 
-          <RoundButton onClick={() => login(LoginProviders.Discord)}>
-            <img width={32} height={32} src={discordLogo} alt={'Discord Logo'} />
-          </RoundButton>
-
-          <RoundButton onClick={() => login(LoginProviders.Twitter)}>
-            <img width={32} height={26.32} src={twitterLogo} alt={'Twitter Logo'} />
-          </RoundButton>
-
-          <RoundButton onClick={() => login(LoginProviders.Facebook)}>
-            <img width={36} height={36} src={facebookLogo} alt={'Facebook Logo'} />
-          </RoundButton> */}
-        </Row>
+        <WelcomeText>{notConnected ? "Welcome" : "Loading"}</WelcomeText>
+        {notConnected ? <LoginScreen login={login} /> : <Loader />}
       </Column>
     </StartScreenLayout>
   );

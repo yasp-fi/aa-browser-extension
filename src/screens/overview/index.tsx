@@ -18,6 +18,7 @@ export const OverviewScreen: React.FC = () => {
     const openInvestments = () => {
         window.open(YASP_FI_INVESTMENTS_DASHBOARD_URL, '_blank');
     };
+        
 
 
     return (
