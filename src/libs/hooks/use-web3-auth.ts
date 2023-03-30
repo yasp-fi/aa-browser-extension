@@ -50,7 +50,7 @@ const buildWeb3Auth = () => {
 export enum AuthStatus {
   Loading,
   NotConnected,
-  Connected
+  Connected,
 }
 
 export const useWeb3Auth = () => {
@@ -60,42 +60,32 @@ export const useWeb3Auth = () => {
   const [safe, setSafe] = useState<CPK | null>(null);
   const [status, setStatus] = useState<AuthStatus>(AuthStatus.Loading);
 
-  useEffect(() => {
-    const initWeb3Auth = async (): Promise<void> => {
-      const auth = buildWeb3Auth();
-      setWeb3Auth(auth);
-      await auth.init();
+  const initWallet = async () => {
+    const privateKey = await provider!.request<string>({
+      method: 'eth_private_key',
+    });
 
-      if (auth.provider) {
-        setProvider(auth.provider);
-        setStatus(AuthStatus.Connected);
-      } else {
-        setStatus(AuthStatus.NotConnected);
-      }
-    };
+    const browserProvider = new ethers.providers.Web3Provider(provider!);
+    const ownerWallet = new Wallet(privateKey!).connect(browserProvider);
+    setWallet(ownerWallet);
 
-    initWeb3Auth().catch(e => console.error(e));
-  }, []);
+    const ethLibAdapter = new EthersAdapter({ ethers, signer: ownerWallet });
+    const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
+    setSafe(proxySafe);
+  };
 
-  useEffect(() => {
-    const initWallet = async () => {
-      const privateKey = await provider!.request<string>({
-        method: 'eth_private_key',
-      });
+  const initWeb3Auth = async (): Promise<void> => {
+    const auth = buildWeb3Auth();
+    setWeb3Auth(auth);
+    await auth.init();
 
-      const browserProvider = new ethers.providers.Web3Provider(provider!);
-      const wallet_ = new Wallet(privateKey!).connect(browserProvider);
-      setWallet(wallet_);
-
-      const ethLibAdapter = new EthersAdapter({ ethers, signer: wallet_ });
-      const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
-      setSafe(proxySafe);
-    };
-
-    if (provider) {
-      initWallet().catch(e => console.error(e));
+    if (auth.provider) {
+      setProvider(auth.provider);
+      setStatus(AuthStatus.Connected);
+    } else {
+      setStatus(AuthStatus.NotConnected);
     }
-  }, [provider]);
+  };
 
   const login = async (loginProvider: LoginProviders) => {
     if (!web3Auth) {
@@ -122,6 +112,16 @@ export const useWeb3Auth = () => {
     setProvider(null);
     setStatus(AuthStatus.NotConnected);
   };
+
+  useEffect(() => {
+    initWeb3Auth().catch(e => console.error(e));
+  }, []);
+
+  useEffect(() => {
+    if (provider) {
+      initWallet().catch(e => console.error(e));
+    }
+  }, [provider]);
 
   return { login, logout, wallet, safe, status, provider };
 };
