@@ -1,12 +1,11 @@
 import React from 'react';
-import {h} from 'preact';
 import styled from 'styled-components';
 import QRCode from 'qrcode.react';
 
 type EthereumQRCodeProps = {
-    address: string;
+  address: string;
 
-    iconSrc?: string;
+  iconSrc?: string;
 };
 
 const QRCodeWrapper = styled.div`
@@ -17,17 +16,25 @@ const QRCodeWrapper = styled.div`
   align-items: center;
 `;
 
-export const AddressQRCode: React.FC<EthereumQRCodeProps> = ({address, iconSrc}) => {
-    return (
-        <QRCodeWrapper>
-            <QRCode value={address} size={132} bgColor={'transparent'} fgColor={'white'} imageSettings={iconSrc ? {
+export const AddressQRCode: React.FC<EthereumQRCodeProps> = ({ address, iconSrc }) => {
+  return (
+    <QRCodeWrapper>
+      <QRCode
+        value={address}
+        size={132}
+        bgColor={'transparent'}
+        fgColor={'white'}
+        imageSettings={
+          iconSrc
+            ? {
                 src: iconSrc,
                 height: 32,
                 width: 32,
                 excavate: true,
-            } : undefined}
-            />
-        </QRCodeWrapper>
-    );
+              }
+            : undefined
+        }
+      />
+    </QRCodeWrapper>
+  );
 };
-

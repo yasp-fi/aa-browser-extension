@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CustomCarouselDot = styled.button`
+export const CustomCarouselDot = styled.button<{active: boolean}>`
   background-color: ${(props) => (props.active ? '#FFFFFF' : '#2C3542')};
   border: none;
   border-radius: 66.6667px;

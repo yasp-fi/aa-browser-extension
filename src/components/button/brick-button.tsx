@@ -1,6 +1,5 @@
 import React from 'react';
-import {h} from 'preact';
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type ButtonProps = {
     filled?: boolean;

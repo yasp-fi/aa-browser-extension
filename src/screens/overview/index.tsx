@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import styled from 'styled-components';
 import {ScreenLayout} from 'components/layout/screen-layout';
 import {Bold18x27} from 'components/typography';
@@ -14,7 +13,6 @@ import {ENABLED_EVM_ASSETS} from '../../constants/enabled-assets-temporary';
 import {CoinListItem} from 'components/coin/list-item';
 import BrickButton from 'components/button/brick-button';
 import {YASP_FI_INVESTMENTS_DASHBOARD_URL} from '../../constants/urls';
-
 
 export const OverviewScreen: React.FC = () => {
     const openInvestments = () => {

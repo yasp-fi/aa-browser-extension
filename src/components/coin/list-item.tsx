@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import {Column, Row} from 'components/layout/flex';
 
 import {CoinProperties} from '../../constants/enabled-assets-temporary';

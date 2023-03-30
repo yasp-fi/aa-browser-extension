@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import styled, {useTheme} from 'styled-components';
 import {Column} from 'components/layout/flex';
 import {Bold24x36, Medium16x24} from 'components/typography';

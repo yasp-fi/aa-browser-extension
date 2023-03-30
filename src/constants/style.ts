@@ -1,6 +1,5 @@
-import {createGlobalStyle} from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import React from 'react';
-
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -18,4 +17,4 @@ export const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
-` as React.FC;
+` 

@@ -1,5 +1,4 @@
 import React, {useMemo} from 'react';
-import {h} from 'preact';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import {Carousel} from 'react-responsive-carousel';
@@ -77,7 +76,7 @@ export const OnboardingCarousel: React.FC<OnboardingCarouselProps> = ({onGetStar
                 showThumbs={false}
                 showIndicators
                 interval={5000}
-                renderIndicator={renderCustomIndicator}
+                renderIndicator={renderCustomIndicator as any}
                 onChange={handleSlideChange}
                 dynamicHeight={false}
                 autoPlay={false}

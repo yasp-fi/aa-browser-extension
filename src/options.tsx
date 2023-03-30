@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {h} from 'preact';
-import {ThemeProvider} from 'styled-components';
-import {defaultTheme} from './themes/default';
+import { ThemeProvider } from 'styled-components';
+import { defaultTheme } from './themes/default'
 
 const OptionsPage = () => {
     return (

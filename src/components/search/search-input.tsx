@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {h} from 'preact';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import useDebounce from '../../hooks/use-debounce';
 
@@ -33,53 +32,44 @@ const Input = styled.input`
 `;
 
 type SearchProps = {
-    handleSearch: (v: string) => void;
-    handleFocus?: () => void;
-    handleBlur?: () => void;
-    placeholder?: string;
+  handleSearch: (v: string) => void;
+  handleFocus?: () => void;
+  handleBlur?: () => void;
+  placeholder?: string;
 };
 
 export const Search: React.FC<SearchProps> = ({
-                                                  handleSearch,
-                                                  handleFocus,
-                                                  handleBlur,
-                                                  placeholder,
-                                              }) => {
-    const inputRef = useRef<HTMLInputElement>(null);
-    const [value, setValue] = useState<string>(``);
-    const debounced = useDebounce(value, 300);
+  handleSearch,
+  handleFocus,
+  handleBlur,
+  placeholder,
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [value, setValue] = useState<string>(``);
+  const debounced = useDebounce(value, 300);
 
-    const handleChange = (e: any) => {
-        setValue(e.currentTarget.value);
+  const handleChange = (e: any) => {
+    setValue(e.currentTarget.value);
+  };
+
+  useEffect(() => {
+    const input = inputRef.current;
+    if (input && handleFocus && handleBlur) {
+      input.addEventListener(`focus`, handleFocus);
+      input.addEventListener(`blur`, handleBlur);
+    }
+
+    return () => {
+      if (input && handleFocus && handleBlur) {
+        input.removeEventListener(`focus`, handleFocus);
+        input.removeEventListener(`blur`, handleBlur);
+      }
     };
+  }, [inputRef, handleFocus, handleBlur]);
 
-    useEffect(() => {
-        const input = inputRef.current;
-        if (input && handleFocus && handleBlur) {
-            input.addEventListener(`focus`, handleFocus);
-            input.addEventListener(`blur`, handleBlur);
-        }
+  useEffect(() => {
+    handleSearch(debounced);
+  }, [debounced]);
 
-        return () => {
-            if (input && handleFocus && handleBlur) {
-                input.removeEventListener(`focus`, handleFocus);
-                input.removeEventListener(`blur`, handleBlur);
-            }
-        };
-    }, [inputRef, handleFocus, handleBlur]);
-
-    useEffect(() => {
-        handleSearch(debounced);
-    }, [debounced]);
-
-    return (
-        <React.Fragment>
-            <Input
-                onChange={handleChange}
-                value={value}
-                placeholder={placeholder}
-                ref={inputRef}
-            />
-        </React.Fragment>
-    );
+  return <Input onChange={handleChange} value={value} placeholder={placeholder} ref={inputRef} />;
 };

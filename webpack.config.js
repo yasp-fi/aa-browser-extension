@@ -3,6 +3,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const ExtensionReloader = require('webpack-extension-reloader');
 const ManifestVersionSyncPlugin = require('webpack-manifest-version-sync-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -18,9 +19,15 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    alias: {
-      react: 'preact/compat',
-      'react-dom': 'preact/compat',
+    fallback: {
+      stream: require.resolve('stream-browserify'),
+      crypto: require.resolve('crypto-browserify'),
+      assert: require.resolve('assert'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      os: require.resolve('os-browserify'),
+      url: require.resolve('url'),
+      process: require.resolve('process'),
     },
   },
   module: {
@@ -86,6 +93,11 @@ module.exports = {
       manifest: path.resolve(__dirname, './src/manifest.json'),
     }),
     new ManifestVersionSyncPlugin(),
+    new webpack.ProvidePlugin({
+      
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+    }),
   ],
   mode: 'production',
   stats: 'minimal',

@@ -15,5 +15,6 @@ export const defaultTheme = {
         red: '#FF5151',
         yellow: '#ef9011',
         white: '#ffffff',
+        black: '#000000'
     },
 };

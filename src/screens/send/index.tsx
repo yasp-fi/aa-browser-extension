@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import styled from 'styled-components';
 
 import {InnerPageTitle} from 'components/layout/inner-page-title';

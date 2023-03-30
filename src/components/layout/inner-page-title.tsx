@@ -1,15 +1,14 @@
 import React from 'react';
-import {h} from 'preact';
 import styled from 'styled-components';
 import arrowLeftSvg from 'assets/icons/arrow-left.svg';
-import {Row} from 'components/layout/flex';
-import {Bold18x27} from '../typography';
-import {Icon} from '../icon';
+import { Row } from 'components/layout/flex';
+import { Bold18x27 } from '../typography';
+import { Icon } from '../icon';
 
 type InnerPageTitleProps = {
-    title: string;
-    rightComponent?: ReturnType<typeof h>;
-    onBackClick?: VoidFunction;
+  title: string;
+  rightComponent?: any;
+  onBackClick?: VoidFunction;
 };
 
 const StyledRow = styled(Row)`
@@ -29,21 +28,17 @@ const Spacer = styled.div`
 `;
 
 export const InnerPageTitle: React.FC<InnerPageTitleProps> = ({
-                                                                  title,
-                                                                  rightComponent,
-                                                                  onBackClick
-                                                              }) => {
-    return (
-        <StyledRow alignItems={'center'}>
-            <Icon onClick={onBackClick} src={arrowLeftSvg} alt={'arrow left svg'}/>
-            <TitleWrapper>
-                <Bold18x27>{title}</Bold18x27>
-            </TitleWrapper>
-            {rightComponent ? (
-                <div>{rightComponent}</div>
-            ) : (
-                <Spacer/>
-            )}
-        </StyledRow>
-    );
+  title,
+  rightComponent,
+  onBackClick,
+}) => {
+  return (
+    <StyledRow alignItems={'center'}>
+      <Icon onClick={onBackClick} src={arrowLeftSvg} alt={'arrow left svg'} />
+      <TitleWrapper>
+        <Bold18x27>{title}</Bold18x27>
+      </TitleWrapper>
+      {rightComponent ? <div>{rightComponent}</div> : <Spacer />}
+    </StyledRow>
+  );
 };

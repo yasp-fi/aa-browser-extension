@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {h} from 'preact';
 import {Row} from 'components/layout/flex';
 import {Icon} from '../icon';
 
