@@ -7,7 +7,7 @@ import {
   ReceiveCoinListScreen,
   SendScreen,
   StartScreen,
-} from 'src/screens';
+} from '../screens';
 
 export const router = createMemoryRouter(
   createRoutesFromElements(
