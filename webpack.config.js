@@ -6,6 +6,7 @@ const ManifestVersionSyncPlugin = require('webpack-manifest-version-sync-plugin'
 const webpack = require('webpack');
 
 module.exports = {
+  mode: "development",
   entry: {
     options: './src/options.tsx',
     popup: './src/popup.tsx',
@@ -94,7 +95,7 @@ module.exports = {
       manifest: path.resolve(__dirname, './src/manifest.json'),
     }),
     new ManifestVersionSyncPlugin(),
-    new webpack.ProvidePlugin({
+    new webpack.ProvidePlugin({  
       
       process: 'process/browser',
       Buffer: ['buffer', 'Buffer'],
