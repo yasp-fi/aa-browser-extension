@@ -8205,7 +8205,15 @@ react-responsive-carousel@^3.2.23:
     prop-types "^15.5.8"
     react-easy-swipe "^0.0.21"
 
-react-router@^6.10.0:
+react-router-dom@^6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.10.0.tgz#090ddc5c84dc41b583ce08468c4007c84245f61f"
+  integrity sha512-E5dfxRPuXKJqzwSe/qGcqdwa18QiWC6f3H3cWXM24qj4N0/beCIf/CWTipop2xm7mR0RCS99NnaqPNjHtrAzCg==
+  dependencies:
+    "@remix-run/router" "1.5.0"
+    react-router "6.10.0"
+
+react-router@6.10.0, react-router@^6.10.0:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.10.0.tgz#230f824fde9dd0270781b5cb497912de32c0a971"
   integrity sha512-Nrg0BWpQqrC3ZFFkyewrflCud9dio9ME3ojHCF/WLsprJVzkq3q3UeEhMCAW1dobjeGbWgjNn/PVF6m46ANxXQ==
@@ -10185,11 +10193,6 @@ workerpool@6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/workerpool/-/workerpool-6.2.1.tgz#46fc150c17d826b86a008e5a4508656777e9c343"
   integrity sha512-ILEIE97kDZvF9Wb9f6h5aXK4swSlKGUcOEGiIYb2OOu/IrDU9iwj0fD//SsA6E5ibwJxpEvhullJY4Sl4GcpAw==
-
-wouter-preact@^2.10.0-alpha.1:
-  version "2.10.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/wouter-preact/-/wouter-preact-2.10.0-alpha.1.tgz#213394a210d1566f8bd5bfc794909b10cafb09b2"
-  integrity sha512-V6K8YBIURy9PHbF1e2P0gCuhCy0Oe0GbD1EZ1VxEWLU/rtBZ7IwkTj+6QVJ236NFbCklDuwL68PiUg44sSgq/w==
 
 wrap-ansi@^2.0.0:
   version "2.1.0"

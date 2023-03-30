@@ -39,7 +39,7 @@ export const OverviewScreen: React.FC = () => {
                     ]} pnlPercentage={10.6453}/>
                 </Row>
 
-                <OverviewActions/>
+                <OverviewActions />
 
                 <OverviewSection sectionText={'Portfolio'} leftSectionActionText={'See all'}
                                  leftSectionActionClick={() => {

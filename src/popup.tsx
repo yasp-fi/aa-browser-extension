@@ -4,7 +4,6 @@ import './assets/fonts.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
-import { Route, Router, Routes } from 'react-router';
 import { defaultTheme } from './themes/default';
 import { GlobalStyle } from './constants/style';
 import {
@@ -14,14 +13,12 @@ import {
   SendScreen,
   StartScreen,
 } from './screens';
-import { hashHistory } from './constants/hash-history';
+import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 
-const Popup = () => {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-      <GlobalStyle />
-      <Router location={'/start'} navigator={hashHistory}>
-        <Routes>
+
+const router = createMemoryRouter(
+    createRoutesFromElements(
+        <React.Fragment>
           <Route path={'/onboarding'} Component={OnboardingScreen} />
 
           <Route path={'/start'} Component={StartScreen} />
@@ -31,8 +28,17 @@ const Popup = () => {
           <Route path={'/coin-list'} Component={ReceiveCoinListScreen} />
 
           <Route path={'/'} Component={OverviewScreen} />
-        </Routes>
-      </Router>
+        </React.Fragment>
+    )
+);
+
+
+
+const Popup = () => {
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };

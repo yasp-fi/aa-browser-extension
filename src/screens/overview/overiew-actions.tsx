@@ -1,6 +1,6 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import styled, { useTheme } from 'styled-components';
-import { redirect } from 'react-router';
 import { Column, Row } from 'components/layout/flex';
 import RoundButton from 'components/button/round-button';
 import { Medium14x21 } from 'components/typography';
@@ -10,6 +10,7 @@ import receiveSvg from 'assets/icons/add.svg';
 import buySvg from 'assets/icons/credit-card.svg';
 import swapSvg from 'assets/icons/trade.svg';
 import sendSvg from 'assets/icons/send.svg';
+import {hashHistory} from "../../constants/hash-history";
 
 type ActionProps = {
   roundButtonIconSrc: string;
@@ -42,6 +43,7 @@ const Action: React.FC<ActionProps> = ({
 
 export const OverviewActions: React.FC = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <OverviewActionsLayout
@@ -56,28 +58,28 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={receiveSvg}
         roundButtonIconAlt={'Receive Icon'}
         actionText={'Receive'}
-        onActionClick={() => redirect('/coin-list')}
+        onActionClick={() => navigate('coin-list')}
       />
       <Action
         roundButtonIconSrc={buySvg}
         roundButtonIconAlt={'Buy Icon'}
         roundButtonBg={'linear-gradient(90deg, #E4BF31 0%, #F87996 100%), #EF9011;'}
         actionText={'Buy'}
-        onActionClick={() => redirect('/receive')}
+        onActionClick={() => navigate('/receive')}
       />
       <Action
         roundButtonIconSrc={swapSvg}
         roundButtonIconAlt={'Swap Icon'}
         roundButtonBg={theme.palette.mediumDarkBlue}
         actionText={'Swap'}
-        onActionClick={() => redirect('/receive')}
+        onActionClick={() => navigate('/receive')}
       />
       <Action
         roundButtonIconSrc={sendSvg}
         roundButtonIconAlt={'Send Icon'}
         roundButtonBg={theme.palette.mediumDarkBlue}
         actionText={'Send'}
-        onActionClick={() => redirect('/send')}
+        onActionClick={() => navigate('/send')}
       />
     </OverviewActionsLayout>
   );
