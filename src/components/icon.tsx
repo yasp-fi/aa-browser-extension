@@ -33,7 +33,7 @@ const IconWrapper = styled.div<{ color?: string; size?: number; margin?: string;
 `;
 
 const StyledIcon = styled.img`
-  width: 100%;
+  //width: 100%;
   height: 100%;
 `;
 

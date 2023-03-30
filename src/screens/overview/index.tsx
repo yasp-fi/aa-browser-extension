@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {ScreenLayout} from 'components/layout/screen-layout';
-import {Bold18x27} from 'components/typography';
+import {Bold16x24, Bold18x27} from 'components/typography';
 import {Column, Row} from 'components/layout/flex';
 
 import settingsIcon from 'assets/icons/settings.svg';
@@ -61,9 +61,9 @@ export const OverviewScreen: React.FC = () => {
 
 
                 <BrickButton onClick={openInvestments} filled>
-                    <Bold18x27>
-                        Browse Investments
-                    </Bold18x27>
+                    <Bold16x24>
+                        Browse investments
+                    </Bold16x24>
                 </BrickButton>
             </Column>
         </OverviewScreenLayout>

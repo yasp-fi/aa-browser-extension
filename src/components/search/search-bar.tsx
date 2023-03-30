@@ -23,4 +23,5 @@ const SearchBarLayout = styled(Row)`
   background-color: ${({theme}) => theme.palette.secondaryBackground};
   height: 46px;
   border-radius: 10px;
+  padding: 0 16px;
 `;

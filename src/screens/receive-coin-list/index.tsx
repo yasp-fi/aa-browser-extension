@@ -14,9 +14,9 @@ import { Bold16x24, Medium14x21, Medium16x24 } from 'components/typography';
 import { AddressQRCode } from 'components/address-qr-code';
 import { getAssetLogoSrc } from '../../utils/get-asset-logo-src';
 
-export const CoinListScreen: React.FC = () => {
-  const theme = useTheme();
-  const [currentCoinOpened, setCurrentCoinOpened] = useState<CoinProperties | null>(null);
+export const ReceiveCoinListScreen: React.FC = () => {
+    const theme = useTheme();
+    const [currentCoinOpened, setCurrentCoinOpened] = useState<CoinProperties | null>(null);
 
   // replace with business logic
   const userAddress = '0x5f55dc562546196014efae0d88bdc2adbffffbbd287';

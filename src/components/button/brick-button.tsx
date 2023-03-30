@@ -34,7 +34,7 @@ const BrickButton = styled.button<ButtonProps>`
   height: ${({height}) => (height ? `${height}` : 'auto')};
   border-radius: 12px;
   margin: ${({margin}) => (margin ? `${margin}` : '0')};
-  cursor: pointer;
+  cursor: ${({disabled}) => (disabled ? 'not-allowed' : 'pointer')};
   transition: all 0.3s ease;
   outline: none;
   border: none;

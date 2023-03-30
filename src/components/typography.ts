@@ -35,6 +35,16 @@ export const Medium14x21 = styled.span<TypographyProps>`
   color: ${({fontColor, theme}) => fontColor || theme.palette.white};
 `;
 
+export const Bold14x21 = styled.span<TypographyProps>`
+  font-style: normal;
+  font-weight: 700;
+= font-size: 14 px;
+  line-height: 21px;
+  text-align: ${(props) => props.textAlign};
+  color: ${({fontColor, theme}) => fontColor || theme.palette.white};
+`;
+
+
 export const Medium18x27 = styled.span<TypographyProps>`
   font-weight: 500;
   font-size: 18px;
@@ -63,11 +73,11 @@ export const Bold16x24 = styled.span<TypographyProps>`
   color: ${({fontColor, theme}) => fontColor || theme.palette.white};
 `;
 
-export const Bold11x16 = styled.span<TypographyProps>`
+export const Bold20x30 = styled.span<TypographyProps>`
   font-style: normal;
   font-weight: 700;
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 20px;
+  line-height: 30px;
   text-align: ${(props) => props.textAlign};
   color: ${({fontColor, theme}) => fontColor || theme.palette.white};
 `;

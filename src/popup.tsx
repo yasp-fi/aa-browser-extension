@@ -8,7 +8,7 @@ import { Route, Router, Routes } from 'react-router';
 import { defaultTheme } from './themes/default';
 import { GlobalStyle } from './constants/style';
 import {
-  CoinListScreen,
+  ReceiveCoinListScreen,
   OnboardingScreen,
   OverviewScreen,
   SendScreen,
@@ -28,7 +28,7 @@ const Popup = () => {
 
           <Route path={'/send'} Component={SendScreen} />
 
-          <Route path={'/coin-list'} Component={CoinListScreen} />
+          <Route path={'/coin-list'} Component={ReceiveCoinListScreen} />
 
           <Route path={'/'} Component={OverviewScreen} />
         </Routes>
