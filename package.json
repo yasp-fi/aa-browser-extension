@@ -43,6 +43,7 @@
     "webpack-manifest-version-sync-plugin": "^0.0.3"
   },
   "dependencies": {
+    "@safe-global/safe-service-client": "^2.0.0",
     "@safe-global/auth-kit": "^0.1.0-alpha.2",
     "@safe-global/relay-kit": "^0.1.0-alpha.2",
     "@safe-global/safe-core-sdk": "^3.3.2",

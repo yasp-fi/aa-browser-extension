@@ -40,7 +40,7 @@
     "48": "assets/img/yasp-fi-48.png",
     "128": "assets/img/yasp-fi-128.png"
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src ws://localhost:*/ https://api.tor.us/ https://api.developer.tor.us/ https://rpc.ankr.com/eth_goerli https://broadcast-server.tor.us/",
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src ws://localhost:*/ https://api.tor.us/ https://api.developer.tor.us/ https://rpc.ankr.com/eth_goerli https://broadcast-server.tor.us/ https://safe-transaction-goerli.safe.global/",
   "web_accessible_resources": [
     "assets/img/*"
   ]

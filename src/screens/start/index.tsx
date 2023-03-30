@@ -64,10 +64,11 @@ export const LoginScreen = (props: {
 };
 
 export const StartScreen: React.FC = () => {
-  const { login, status } = useWeb3Auth();
+  const { login, logout, status } = useWeb3Auth();
   const navigate = useNavigate();
 
   if (status === AuthStatus.Connected) {
+    // logout();
     navigate('/overview');
   }
 

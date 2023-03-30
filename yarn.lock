@@ -1716,6 +1716,15 @@
     "@safe-global/safe-core-sdk-types" "^1.9.0"
     node-fetch "^2.6.6"
 
+"@safe-global/safe-service-client@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@safe-global/safe-service-client/-/safe-service-client-2.0.0.tgz#80b0568c10c5831b4c35062643ed736f1fc269cc"
+  integrity sha512-YP9yrfSePVuytEXOlf74Fh1MYwpPUAqgoT5GEM2iF3mydD07P+AdjDa1BPzqeqkO8cktcaX4o3Y5vFB5/Sqnqw==
+  dependencies:
+    "@ethersproject/abstract-signer" "^5.7.0"
+    "@safe-global/safe-core-sdk-types" "^1.9.0"
+    node-fetch "^2.6.6"
+
 "@scure/base@~1.1.0":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@scure/base/-/base-1.1.1.tgz#ebb651ee52ff84f420097055f4bf46cfba403938"

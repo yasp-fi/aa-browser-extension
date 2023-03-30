@@ -57,7 +57,7 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={receiveSvg}
         roundButtonIconAlt={'Receive Icon'}
         actionText={'Receive'}
-        onActionClick={() => navigate('coin-list')}
+        onActionClick={() => navigate('/receive')}
       />
       <Action
         roundButtonIconSrc={buySvg}

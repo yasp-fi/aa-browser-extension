@@ -18,11 +18,11 @@ import { useNavigate } from 'react-router';
 export const ReceiveCoinListScreen: React.FC = () => {
     const theme = useTheme();
     const [currentCoinOpened, setCurrentCoinOpened] = useState<CoinProperties | null>(null);
-    const {wallet} = useWeb3Auth();
+    const {safe} = useWeb3Auth();
     const navigate = useNavigate();
 
   // replace with business logic
-  const userAddress = wallet?.address || '0x5f55dc562546196014efae0d88bdc2adbffffbbd287';
+  const userAddress = safe?.address || '';
 
   return (
     <CoinListScreenLayout>
