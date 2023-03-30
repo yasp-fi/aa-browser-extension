@@ -75,20 +75,16 @@ export const StartScreen: React.FC = () => {
   const notConnected = status === AuthStatus.NotConnected;
 
   return (
-    <StartScreenLayout>
+    <ScreenLayout>
       <Column gap={'16px'} padding={'20px'} alignItems={'center'} justifyContent={'center'}>
         <img src={yaspLogo} width={60.29} height={47.85} alt={'Yasp Logo Image'} />
 
         <WelcomeText>{notConnected ? "Welcome" : "Loading"}</WelcomeText>
         {notConnected ? <LoginScreen login={login} /> : <Loader />}
       </Column>
-    </StartScreenLayout>
+    </ScreenLayout>
   );
 };
-
-const StartScreenLayout = styled(ScreenLayout)`
-  background-color: ${({ theme }) => theme.palette.background};
-`;
 
 const WelcomeText = styled.span`
   font-size: 32px;

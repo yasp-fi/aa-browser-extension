@@ -42,7 +42,7 @@ export const SendScreen: React.FC = () => {
 
   return (
     <SendScreenLayout>
-      <Column gap={'16px'}>
+      <Column padding={'16px'} gap={'16px'}>
         <InnerPageTitle onBackClick={() => navigate('/overview')} title={'Send'} />
         <SendInput
           sendAmountValue={sendAmountValue}
@@ -71,5 +71,4 @@ export const SendScreen: React.FC = () => {
 
 const SendScreenLayout = styled(ScreenLayout)`
   background-color: ${({ theme }) => theme.palette.background};
-  padding: 16px;
 `;

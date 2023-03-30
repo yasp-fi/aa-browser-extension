@@ -75,4 +75,9 @@ const CoinListItemLayout = styled(Row)`
   cursor: pointer;
   border-top: 1px solid ${({theme}) => theme.palette.secondaryBackground};
   border-bottom: 1px solid ${({theme}) => theme.palette.secondaryBackground};
+  transition: all 0.3s ease;
+  
+  :hover {
+    background: ${({theme}) => theme.palette.secondaryBackground};
+  }
 `;

@@ -15,6 +15,7 @@ type ActionProps = {
   roundButtonIconSrc: string;
   roundButtonIconAlt: string;
   roundButtonBg: string;
+  roundButtonHoverColor?: string;
   actionText: string;
   roundButtonIsOutlined?: boolean;
 
@@ -26,12 +27,13 @@ const Action: React.FC<ActionProps> = ({
   roundButtonBg,
   roundButtonIsOutlined = false,
   roundButtonIconAlt,
+  roundButtonHoverColor,
   actionText,
   onActionClick,
 }) => {
   return (
     <Column alignItems={'center'} gap={'8px'}>
-      <RoundButton onClick={onActionClick} color={roundButtonBg} outlined={roundButtonIsOutlined}>
+      <RoundButton hoverColor={roundButtonHoverColor} onClick={onActionClick} color={roundButtonBg} outlined={roundButtonIsOutlined}>
         <Icon onClick={onActionClick} src={roundButtonIconSrc} alt={roundButtonIconAlt} />
       </RoundButton>
 
@@ -54,22 +56,25 @@ export const OverviewActions: React.FC = () => {
     >
       <Action
         roundButtonBg={theme.palette.blue}
+        roundButtonHoverColor={'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #0085FF'}
         roundButtonIconSrc={receiveSvg}
         roundButtonIconAlt={'Receive Icon'}
         actionText={'Receive'}
         onActionClick={() => navigate('/receive')}
       />
       <Action
+        roundButtonBg={'linear-gradient(90deg, #E4BF31 0%, #F87996 100%), #EF9011;'}
+        roundButtonHoverColor={'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), linear-gradient(90deg, #E4BF31 0%, #F87996 100%), #EF9011'}
         roundButtonIconSrc={buySvg}
         roundButtonIconAlt={'Buy Icon'}
-        roundButtonBg={'linear-gradient(90deg, #E4BF31 0%, #F87996 100%), #EF9011;'}
         actionText={'Buy'}
         onActionClick={() => navigate('/receive')}
       />
       <Action
+        roundButtonBg={theme.palette.mediumDarkBlue}
+        roundButtonHoverColor={'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #2C3542'}
         roundButtonIconSrc={swapSvg}
         roundButtonIconAlt={'Swap Icon'}
-        roundButtonBg={theme.palette.mediumDarkBlue}
         actionText={'Swap'}
         onActionClick={() => navigate('/receive')}
       />
@@ -77,6 +82,7 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={sendSvg}
         roundButtonIconAlt={'Send Icon'}
         roundButtonBg={theme.palette.mediumDarkBlue}
+        roundButtonHoverColor={'linear-gradient(0deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), #2C3542'}
         actionText={'Send'}
         onActionClick={() => navigate('/send')}
       />
