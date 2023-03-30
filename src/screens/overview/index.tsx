@@ -13,13 +13,15 @@ import {ENABLED_EVM_ASSETS} from '../../constants/enabled-assets-temporary';
 import {CoinListItem} from 'components/coin/list-item';
 import BrickButton from 'components/button/brick-button';
 import {YASP_FI_INVESTMENTS_DASHBOARD_URL} from '../../constants/urls';
+import { useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 
 export const OverviewScreen: React.FC = () => {
     const openInvestments = () => {
         window.open(YASP_FI_INVESTMENTS_DASHBOARD_URL, '_blank');
     };
-        
 
+    const {safe} = useWeb3Auth();
+    console.log(safe);
 
     return (
         <OverviewScreenLayout>

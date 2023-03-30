@@ -1,8 +1,9 @@
 import { CHAIN_NAMESPACES, EVM_ADAPTERS, SafeEventEmitterProvider } from '@web3Auth/base';
 import { Web3AuthNoModal } from '@web3auth/no-modal';
 import { useEffect, useState } from 'react';
-import { BrowserProvider, Wallet } from 'ethers';
+import { ethers, Wallet } from 'ethers';
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
+import CPK, { EthersAdapter } from 'contract-proxy-kit';
 
 export enum LoginProviders {
   Google = 'google',
@@ -56,6 +57,7 @@ export const useWeb3Auth = () => {
   const [web3Auth, setWeb3Auth] = useState<Web3AuthNoModal | null>(null);
   const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null);
   const [wallet, setWallet] = useState<Wallet | null>(null);
+  const [safe, setSafe] = useState<CPK | null>(null);
   const [status, setStatus] = useState<AuthStatus>(AuthStatus.Loading);
 
   useEffect(() => {
@@ -81,8 +83,13 @@ export const useWeb3Auth = () => {
         method: 'eth_private_key',
       });
 
-      const browserProvider = new BrowserProvider(provider!);
-      setWallet(new Wallet(privateKey!).connect(browserProvider));
+      const browserProvider = new ethers.providers.Web3Provider(provider!);
+      const wallet_ = new Wallet(privateKey!).connect(browserProvider);
+      setWallet(wallet_);
+
+      const ethLibAdapter = new EthersAdapter({ ethers, signer: wallet_ });
+      const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
+      setSafe(proxySafe);
     };
 
     if (provider) {
@@ -116,5 +123,5 @@ export const useWeb3Auth = () => {
     setStatus(AuthStatus.NotConnected);
   };
 
-  return { login, logout, wallet, status, provider };
+  return { login, logout, wallet, safe, status, provider };
 };
