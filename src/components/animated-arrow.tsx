@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import styled from 'styled-components';
 
 import arrowDownSvg from 'assets/icons/arrow-down.svg';
@@ -18,8 +17,7 @@ export const AnimatedArrowIcon: React.FC<AnimatedArrowIconProps> = ({
         <AnimatedArrowIconContainer
             src={arrowDownSvg}
             isTransformActive={isActive}
-            width={18}
-            height={18}
+            size={18}
             onClick={() => (onClick ? onClick() : undefined)}
             alt={`animated arrow down`}
         />

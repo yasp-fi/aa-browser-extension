@@ -1,5 +1,4 @@
 import React from 'react';
-import {h} from 'preact';
 import {useTheme} from 'styled-components';
 
 import gasStationSvg from 'assets/icons/gas-station.svg';

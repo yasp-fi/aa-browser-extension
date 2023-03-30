@@ -14,6 +14,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
+    chunkFilename: 'chunk-[id]-[contenthash].js',
     path: path.resolve(__dirname, 'build'),
   },
   resolve: {

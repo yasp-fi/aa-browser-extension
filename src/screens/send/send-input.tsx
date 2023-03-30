@@ -1,6 +1,5 @@
 import React, {useCallback} from 'react';
 import styled, {useTheme} from 'styled-components';
-import {h} from 'preact';
 import {CoinProperties} from '../../constants/enabled-assets-temporary';
 import {Column, Row} from 'components/layout/flex';
 import {Bold20x30, Medium14x21} from 'components/typography';
