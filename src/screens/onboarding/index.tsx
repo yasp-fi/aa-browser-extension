@@ -1,10 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {useTheme} from 'styled-components';
 import {h} from 'preact';
-import {useTheme} from 'styled-components';
 
 import {ScreenLayout} from 'components/layout/screen-layout';
-import {DescriptionTypography, TitleTypography, HighlightedText, ActionText} from 'components/typography';
+import {Bold16x24, Bold18x27, HighlightText, Medium18x27} from 'components/typography';
 import {Column} from 'components/layout/flex';
 
 
@@ -19,19 +18,21 @@ type StepProps = {
     onNext: VoidFunction
 }
 
-const GetStartedStep: React.FC<StepProps> = ({ onNext }) => {
-    const theme = useTheme()
+const GetStartedStep: React.FC<StepProps> = ({onNext}) => {
+    const theme = useTheme();
 
     return (
         <OnboardingLayout>
             <Column padding={'20px'} alignItems={'center'} gap={'6.5px'}>
-                <TitleTypography fontColor={theme.palette.white}>
+                <Bold18x27 fontColor={theme.palette.white}>
                     Hello, it's YaspFi 👋
-                </TitleTypography>
+                </Bold18x27>
 
-                <DescriptionTypography fontColor={theme.palette.white} textAlign={'center'}>
-                    <HighlightedText fontColor={theme.palette.pink}>DeFi 2.0 Wallet</HighlightedText> that helps you <HighlightedText fontColor={theme.palette.blue}>earn more</HighlightedText> by <HighlightedText fontColor={theme.palette.yellow}>doing less.</HighlightedText>
-                </DescriptionTypography>
+                <Medium18x27 fontColor={theme.palette.white} textAlign={'center'}>
+                    <HighlightText fontColor={theme.palette.pink}>DeFi 2.0 Wallet</HighlightText> that helps
+                    you <HighlightText fontColor={theme.palette.blue}>earn more</HighlightText> by <HighlightText
+                    fontColor={theme.palette.yellow}>doing less.</HighlightText>
+                </Medium18x27>
                 <img
                     width={375}
                     src={firstStepImg}
@@ -39,28 +40,27 @@ const GetStartedStep: React.FC<StepProps> = ({ onNext }) => {
                 />
 
                 <OnboardingStartButton onClick={onNext} width={'100%'} height={56} filled>
-                    <ActionText color={theme.palette.white}>
+                    <Bold16x24 color={theme.palette.white}>
                         Get Started
-                    </ActionText>
+                    </Bold16x24>
                 </OnboardingStartButton>
             </Column>
         </OnboardingLayout>
-    )
-}
-
+    );
+};
 
 
 const OnboardingCarouselStep: React.FC<StepProps> = () => {
-    const [location, setLocation] = useLocation();
+    const [, setLocation] = useLocation();
 
     return (
         <OnboardingLayout>
-            <Column padding={'20px'}>
-                <OnboardingCarousel onGetStartedClick={() => setLocation('/start')} />
+            <Column padding={'16px'}>
+                <OnboardingCarousel onGetStartedClick={() => setLocation('/start')}/>
             </Column>
         </OnboardingLayout>
-    )
-}
+    );
+};
 
 
 export const OnboardingScreen: React.FC = () => {
@@ -68,22 +68,22 @@ export const OnboardingScreen: React.FC = () => {
 
     return (
         <React.Fragment>
-            {step === 0 ? <GetStartedStep onNext={() => setStep(1)} /> : null}
-            {step === 1 ? <OnboardingCarouselStep onNext={() => setStep(0)} /> : null}
+            {step === 0 ? <GetStartedStep onNext={() => setStep(1)}/> : null}
+            {step === 1 ? <OnboardingCarouselStep onNext={() => setStep(0)}/> : null}
         </React.Fragment>
-    )
+    );
 };
 
 
 const OnboardingLayout = styled(ScreenLayout)`
-    background-color: ${props => props.theme.palette.background};
-    background-image: url(${bg});
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 5px;
+  background-color: ${props => props.theme.palette.background};
+  background-image: url(${bg});
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5px;
 `;
 
 
 const OnboardingStartButton = styled(BrickButton)`
-    margin-top: 20px;
+  margin-top: 20px;
 `;

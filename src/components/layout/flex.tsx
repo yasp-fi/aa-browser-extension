@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type FlexProps = {
     gap?: string;
@@ -8,6 +8,7 @@ type FlexProps = {
 
     marginTop?: string;
     height?: string;
+    width?: string;
 };
 
 
@@ -19,6 +20,7 @@ export const Row = styled.div<FlexProps>`
   justify-content: ${(props) => props.justifyContent};
   padding: ${(props) => props.padding};
   height: ${(props) => props.height};
+  width: ${(props) => props.width};
   margin-top: ${(props) => props.marginTop};
 `;
 
@@ -30,6 +32,6 @@ export const Column = styled.div<FlexProps>`
   justify-content: ${(props) => props.justifyContent};
   padding: ${(props) => props.padding};
   height: ${(props) => props.height};
-
+  width: ${(props) => props.width};
   margin-top: ${(props) => props.marginTop};
 `;

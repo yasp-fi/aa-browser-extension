@@ -1,63 +1,51 @@
 import 'libs/polyfills';
 import './assets/fonts.css';
 
-import React, { useState, useEffect } from 'react';
-import { Router, Route, BaseLocationHook } from "wouter-preact";
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from 'styled-components';
-import { h } from 'preact';
-
+import {ThemeProvider} from 'styled-components';
+import {h} from 'preact';
+import {Route, Router} from 'preact-router';
 import {defaultTheme} from './themes/default';
 import {GlobalStyle} from './constants/style';
-import {OnboardingScreen, OverviewScreen, StartScreen} from './screens';
+import {CoinListScreen, OnboardingScreen, OverviewScreen, SendScreen, StartScreen} from './screens';
+import {hashHistory} from './constants/hash-history';
 
-const currentLocation = () => {
-    return window.location.hash.replace(/^#/, "") || "/";
-};
-
-const navigate = (to: string) => (window.location.hash = to);
-
-const useHashLocation: BaseLocationHook = () => {
-    const [loc, setLoc] = useState(currentLocation());
-
-    useEffect(() => {
-        // this function is called whenever the hash changes
-        const handler = () => setLoc(currentLocation());
-
-        // subscribe to hash changes
-        window.addEventListener("hashchange", handler);
-        return () => window.removeEventListener("hashchange", handler);
-    }, []);
-
-
-    return [loc, navigate];
-};
 
 const Popup = () => {
-  return (
-    <ThemeProvider theme={defaultTheme}>
-        <GlobalStyle />
-        <Router hook={useHashLocation}>
-            <Route
-                path={'/onboarding'}
-                component={OnboardingScreen}
-            />
+    return (
+        <ThemeProvider theme={defaultTheme}>
+            <GlobalStyle/>
+            {/*// @ts-ignore*/}
+            <Router history={hashHistory}>
+                <Route
+                    path={'/onboarding'}
+                    component={OnboardingScreen}
+                />
 
-            <Route
-                path={'/'}
-                component={StartScreen}
-            />
+                <Route
+                    path={'/start'}
+                    component={StartScreen}
+                />
 
-            <Route
-                path={'/overview'}
-                component={OverviewScreen}
-            />
-        </Router>
-    </ThemeProvider>
-  );
+                <Route
+                    path={'/send'}
+                    component={SendScreen}
+                />
+
+
+                <Route path={'/coin-list'} component={CoinListScreen}/>
+
+                <Route
+                    path={'/'}
+                    component={OverviewScreen}
+                />
+            </Router>
+        </ThemeProvider>
+    );
 };
 
 const root = document.createElement('div');
 document.body.appendChild(root);
 
-ReactDOM.render(<Popup />, root);
+ReactDOM.render(<Popup/>, root);

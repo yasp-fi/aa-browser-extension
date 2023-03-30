@@ -1,15 +1,15 @@
 import React from 'react';
-import { h } from 'preact';
+import {h} from 'preact';
 import {ScreenLayout} from 'components/layout/screen-layout';
 import styled from 'styled-components';
 import {Column, Row} from 'components/layout/flex';
 
 import BrickButton from 'components/button/brick-button';
 import RoundButton from 'components/button/round-button';
-import {Span14x21, TitleTypography} from 'components/typography';
+import {Bold18x27, Medium14x21} from 'components/typography';
 
 
-import yaspLogo from 'assets/yasp-logo.svg';
+import yaspLogo from 'assets/icons/yasp-logo.svg';
 
 import googleLogo from 'assets/third-parties/google.svg';
 import discordLogo from 'assets/third-parties/discord.svg';
@@ -32,13 +32,14 @@ export const StartScreen: React.FC = () => {
                 </WelcomeText>
 
 
-                <BrickButton margin={'12px 0 0 0'} width={'100%'} height={'109px'} alignItems={'flex-start'} justifyContent={'flex-start'} flexDirection={'column'} filled>
-                    <TitleTypography>
+                <BrickButton margin={'12px 0 0 0'} width={'100%'} height={'109px'} alignItems={'flex-start'}
+                             justifyContent={'flex-start'} flexDirection={'column'} filled>
+                    <Bold18x27>
                         Create new wallet
-                    </TitleTypography>
-                    <Span14x21 textAlign={'left'}>
+                    </Bold18x27>
+                    <Medium14x21 textAlign={'left'}>
                         12/24 words separated <br/>by spaces.
-                    </Span14x21>
+                    </Medium14x21>
                 </BrickButton>
 
                 <OrText textAlign={'center'}>
@@ -81,13 +82,12 @@ export const StartScreen: React.FC = () => {
                 </Row>
             </Column>
         </StartScreenLayout>
-    )
-}
-
+    );
+};
 
 
 const StartScreenLayout = styled(ScreenLayout)`
-    background-color: ${({theme}) => theme.palette.background}
+  background-color: ${({theme}) => theme.palette.background}
 `;
 
 
@@ -99,7 +99,7 @@ const WelcomeText = styled.span`
   color: ${({theme}) => theme.palette.white};
 `;
 
-const OrText = styled(Span14x21)`
-    color: ${({theme}) => theme.palette.gray};
-    text-transform: uppercase;
+const OrText = styled(Medium14x21)`
+  color: ${({theme}) => theme.palette.gray};
+  text-transform: uppercase;
 `;
