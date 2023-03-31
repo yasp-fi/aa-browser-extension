@@ -69,7 +69,7 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={buySvg}
         roundButtonIconAlt={'Buy Icon'}
         actionText={'Buy'}
-        onActionClick={() => navigate('/receive')}
+        onActionClick={() => window.open('https://changelly.com/buy-crypto', '_blank')}
       />
       <Action
         roundButtonBg={theme.palette.mediumDarkBlue}

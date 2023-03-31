@@ -9,7 +9,7 @@ import {Bold16x24, Medium14x21} from "components/typography";
 
 export const BuyCryptoBanner: React.FC = () => {
     return (
-        <Layout gap={'8px'} height={'100px'} width={'100%'} onClick={() => window.open('https://changelly.com', '_blank')} alignItems={'center'}>
+        <Layout gap={'8px'} height={'100px'} width={'100%'} onClick={() => window.open('https://changelly.com/buy-crypto', '_blank')} alignItems={'center'}>
             <Icon margin={'0 0 0 24px'} src={coinNice} size={64}  alt={'Coin picture'}/>
 
             <Column>
