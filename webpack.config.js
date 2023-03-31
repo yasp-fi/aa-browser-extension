@@ -10,9 +10,9 @@ module.exports = {
   entry: {
     options: './src/options.tsx',
     popup: './src/popup.tsx',
-    content: './src/content.tsx',
     background: './src/background.tsx',
-    contentScript: './src/contentScript.ts'
+    content: './src/content/index.ts',
+    injections: './src/content/injections.ts',
   },
   output: {
     filename: '[name].js',

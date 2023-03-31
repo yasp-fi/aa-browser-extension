@@ -25,25 +25,9 @@
   },
   "content_scripts": [
     {
-      "all_frames": false,
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "content.js"
-      ]
-    },
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js": [
-        "contentscript.js"
-      ],
+      "matches": ["https://*/*", "http://localhost/*", "http://127.0.0.1/*", "http://[::1]/*"],
       "run_at": "document_start",
-      "all_frames": true
+      "js": ["content.js"]
     }
   ],
   "icons": {
@@ -54,6 +38,7 @@
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; connect-src ws://localhost:*/ https://api.tor.us/ https://api.developer.tor.us/ https://rpc.ankr.com/eth_goerli https://broadcast-server.tor.us/ https://safe-transaction-goerli.safe.global/",
   "web_accessible_resources": [
-    "assets/img/*"
+    "assets/img/*",
+    "injections.js"
   ]
 }
