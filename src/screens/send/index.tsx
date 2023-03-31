@@ -37,7 +37,7 @@ export const SendScreen: React.FC = () => {
         to: destinationAddressValue,
         value: value.toString(),
       },
-    ], {gasLimit: 500000});
+    ], {gasLimit: 1000000});
   };
 
   return (
