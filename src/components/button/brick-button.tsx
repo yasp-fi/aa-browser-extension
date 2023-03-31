@@ -12,6 +12,7 @@ type ButtonProps = {
     alignItems?: string;
     padding?: string;
     flexDirection?: string;
+    borderRadius?: string;
 
 
     backgroundColor?: string;
@@ -32,7 +33,8 @@ const BrickButton = styled.button<ButtonProps>`
   gap: 8px;
   width: ${({width}) => (width ? `${width}` : 'auto')};
   height: ${({height}) => (height ? `${height}` : 'auto')};
-  border-radius: 12px;
+  
+  border-radius: ${({borderRadius}) => (borderRadius ? `${borderRadius}` : '12px')};
   margin: ${({margin}) => (margin ? `${margin}` : '0')};
   cursor: ${({disabled}) => (disabled ? 'not-allowed' : 'pointer')};
   transition: all 0.3s ease;

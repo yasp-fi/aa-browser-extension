@@ -4,7 +4,7 @@ import {CoinProperties} from '../../constants/enabled-assets-temporary';
 import {Column, Row} from 'components/layout/flex';
 import {Bold20x30, Medium14x21} from 'components/typography';
 import {Icon} from 'components/icon';
-import {getAssetLogoSrc} from '../../utils/get-asset-logo-src';
+import {getYaspApiStaticSrc} from '../../utils/get-yasp-api-static-src';
 import {AnimatedArrowIcon} from 'components/animated-arrow';
 
 
@@ -63,7 +63,7 @@ export const SendInput: React.FC<SendInputProps> = ({
 
             <Row alignItems={'center'} justifyContent={'space-between'}>
                 <Row width={'auto'} gap={'8px'} alignItems={'center'}>
-                    <Icon size={32} src={getAssetLogoSrc(sendCoinSelected.imageSlug)}
+                    <Icon size={32} src={getYaspApiStaticSrc(sendCoinSelected.imageSlug)}
                           alt={`${sendCoinSelected.symbol} logo`}/>
                     <Bold20x30>
                         {sendCoinSelected.symbol}

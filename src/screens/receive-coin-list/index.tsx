@@ -11,7 +11,7 @@ import { CoinProperties, ENABLED_EVM_ASSETS } from '../../constants/enabled-asse
 
 import { Bold16x24, Medium14x21, Medium16x24 } from 'components/typography';
 import { AddressQRCode } from '../../components/address-qr-code';
-import { getAssetLogoSrc } from '../../utils/get-asset-logo-src';
+import { getYaspApiStaticSrc } from '../../utils/get-yasp-api-static-src';
 import { useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 import { useNavigate } from 'react-router';
 
@@ -47,7 +47,7 @@ export const ReceiveCoinListScreen: React.FC = () => {
 
             <AddressQRCode
               address={userAddress}
-              iconSrc={getAssetLogoSrc(currentCoinOpened.imageSlug)}
+              iconSrc={getYaspApiStaticSrc(currentCoinOpened.imageSlug)}
             />
 
             <Column alignItems={'flex-start'} justifyContent={'flex-start'}>

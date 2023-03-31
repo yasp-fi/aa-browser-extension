@@ -15,12 +15,17 @@ import {
 } from './screens';
 import { createMemoryRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import { usePriceQuotesTrigger } from "./store /use-price-quotes-store";
+import {ConfirmTransactionScreen} from "./screens/confirm-transaction";
 
 
 const router = createMemoryRouter(
   createRoutesFromElements(
     <React.Fragment>
-      <Route path={'/'} Component={OnboardingScreen} />
+      {/*<Route path={'/'} Component={() => <ConfirmTransactionScreen*/}
+      {/*    assetAddress={'0x45AC379F019E48ca5dAC02E54F406F99F5088099'}*/}
+      {/*    transactionAmount={'10.6453'}*/}
+      {/*    transactionFee={'0.001'}*/}
+      {/*    userAddress={'0x690B9A9E9aa1C9dB991C7721a92d351Db4FaC990'} />} />*/}
 
       <Route path={'/start'} Component={StartScreen} />
 

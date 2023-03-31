@@ -4,7 +4,7 @@ import {Column, Row} from 'components/layout/flex';
 import {CoinProperties} from '../../constants/enabled-assets-temporary';
 import styled, {useTheme} from 'styled-components';
 import {Icon} from '../icon';
-import {getAssetLogoSrc} from '../../utils/get-asset-logo-src';
+import {getYaspApiStaticSrc} from '../../utils/get-yasp-api-static-src';
 import {Bold16x24, Medium16x24} from 'components/typography';
 import {NumericFormat} from 'react-number-format';
 
@@ -29,7 +29,7 @@ export const CoinListItem: React.FC<CoinListItemProps> = ({
 
     return (
         <CoinListItemLayout onClick={onClick} height={'72px'} alignItems={'center'} gap={'12px'}>
-            <Icon size={48} src={getAssetLogoSrc(coin.imageSlug)} alt={`${coin.name} logo`}/>
+            <Icon size={48} src={getYaspApiStaticSrc(coin.imageSlug)} alt={`${coin.name} logo`}/>
             <Column width={'calc(100% - 50px)'} gap={'2px'}>
                 <Row alignItems={'center'} justifyContent={'space-between'}>
                     <Bold16x24>
