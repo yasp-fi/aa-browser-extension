@@ -26,7 +26,7 @@ export const ReceiveCoinListScreen: React.FC = () => {
 
   return (
     <CoinListScreenLayout>
-      <Column gap={'12px'}>
+      <Column padding={'16px'} gap={'12px'}>
         <InnerPageTitle onBackClick={() => navigate('/overview')} title={'Receive coin'} />
         <SearchBar />
         {ENABLED_EVM_ASSETS.map(coin => (
@@ -63,7 +63,6 @@ export const ReceiveCoinListScreen: React.FC = () => {
 
 const CoinListScreenLayout = styled(ScreenLayout)`
   background-color: ${({ theme }) => theme.palette.background};
-  padding: 16px;
 `;
 
 const UserAddress = styled(Medium16x24)`

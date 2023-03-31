@@ -20,9 +20,9 @@ import { usePriceQuotesTrigger } from "./store /use-price-quotes-store";
 const router = createMemoryRouter(
   createRoutesFromElements(
     <React.Fragment>
-      <Route path={'/onboarding'} Component={OnboardingScreen} />
+      <Route path={'/'} Component={OnboardingScreen} />
 
-      <Route path={'/'} Component={StartScreen} />
+      <Route path={'/start'} Component={StartScreen} />
 
       <Route path={'/send'} Component={SendScreen} />
 

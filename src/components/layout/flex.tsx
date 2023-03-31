@@ -7,6 +7,7 @@ type FlexProps = {
     padding?: string;
 
     marginTop?: string;
+    marginBottom?: string;
     height?: string;
     width?: string;
 };
@@ -22,6 +23,7 @@ export const Row = styled.div<FlexProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 `;
 
 export const Column = styled.div<FlexProps>`
@@ -34,4 +36,5 @@ export const Column = styled.div<FlexProps>`
   height: ${(props) => props.height};
   width: ${(props) => props.width};
   margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
 `;
