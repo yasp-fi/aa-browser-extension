@@ -53,6 +53,7 @@ export const OverviewActions: React.FC = () => {
       gap={'24px'}
       height={'117px'}
       marginTop={'12px'}
+      marginBottom={'12px'}
     >
       <Action
         roundButtonBg={theme.palette.blue}

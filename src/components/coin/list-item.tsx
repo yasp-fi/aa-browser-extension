@@ -25,7 +25,12 @@ export const CoinListItem: React.FC<CoinListItemProps> = ({
                                                               onClick
                                                           }) => {
     const isPositivePriceChange = coinPriceChangePercentage > 0;
+
+
+    const priceChangeSign = coinPriceChangePercentage === 0 ? '' : isPositivePriceChange ? '+' : '-';
+
     const theme = useTheme();
+    const priceChangeColor = coinPriceChangePercentage === 0 ? theme.palette.gray : isPositivePriceChange ? theme.palette.green : theme.palette.red;
 
     return (
         <CoinListItemLayout onClick={onClick} height={'72px'} alignItems={'center'} gap={'12px'}>
@@ -59,8 +64,7 @@ export const CoinListItem: React.FC<CoinListItemProps> = ({
                     <NumericFormat
                         displayType={'text'}
                         value={coinPriceChangePercentage}
-                        renderText={(value: string) => <Medium16x24
-                            fontColor={isPositivePriceChange ? theme.palette.green : theme.palette.red}>{isPositivePriceChange ? '+' : '-'}{value}%</Medium16x24>}
+                        renderText={(value: string) => <Medium16x24 fontColor={priceChangeColor}>{priceChangeSign}{value}%</Medium16x24>}
                         decimalSeparator={'.'}
                         decimalScale={1}
                     />

@@ -15,6 +15,7 @@ import BrickButton from 'components/button/brick-button';
 import { YASP_FI_INVESTMENTS_DASHBOARD_URL } from '../../constants/urls';
 import { useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 import { getSafeUSDBalance, TokenBalance } from '../../libs/safe-service';
+import {BuyCryptoBanner} from "./buy-crypto-banner";
 
 export const OverviewScreen: React.FC = () => {
   const openInvestments = () => {
@@ -31,6 +32,7 @@ export const OverviewScreen: React.FC = () => {
   useEffect(() => {
     if (!safe || !wallet) return;
     getSafeUSDBalance(safe, wallet).then(response => {
+      console.info(response)
       setTokens(response);
     });
   }, [safe, wallet]);
@@ -53,6 +55,10 @@ export const OverviewScreen: React.FC = () => {
         <Row alignItems={'center'} justifyContent={'center'}>
           <BalanceSphere balance={totalUsdBalance} colors={['#2AB0FD']} pnlPercentage={10.6453} />
         </Row>
+
+        <OverviewSection sectionText={'Recent'} leftSectionActionText={'History'} leftSectionActionClick={() => {}}>
+          <BuyCryptoBanner />
+        </OverviewSection>
 
         <OverviewActions />
 
