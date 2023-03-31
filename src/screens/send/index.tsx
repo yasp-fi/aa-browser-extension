@@ -31,13 +31,16 @@ export const SendScreen: React.FC = () => {
   const transferETH = async () => {
     if (!safe) return;
     const value = utils.parseUnits(sendAmountValue, 'ether');
-    const txObject = await safe.execTransactions([
-      {
-        data: '0x',
-        to: destinationAddressValue,
-        value: value.toString(),
-      },
-    ], {gasLimit: 1000000});
+    const txObject = await safe.execTransactions(
+      [
+        {
+          data: '0x',
+          to: destinationAddressValue,
+          value: value.toString(),
+        },
+      ],
+      { gasLimit: (await safe.isProxyDeployed()) ? undefined : 1000000 }
+    );
   };
 
   return (
