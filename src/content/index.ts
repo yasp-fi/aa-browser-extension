@@ -10,7 +10,16 @@ async function injectProvider() {
     };
 
     await loadExtensionScript('yasp-aa-extension', src, attributes)
+
 }
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    console.info(request)
+    if (request.type === 'SET_SAFE_CPK') {
+        // Process the received data
+        console.log(request.data);
+    }
+});
 
 injectProvider();
+

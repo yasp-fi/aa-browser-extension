@@ -60,6 +60,11 @@ export const useWeb3Auth = () => {
 
     const ethLibAdapter = new EthersAdapter({ ethers, signer: ownerWallet });
     const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
+
+
+    if (chrome) {
+      await chrome.runtime.sendMessage({ type: 'SET_SAFE_CPK', payload: await ownerWallet.getAddress(), target: 'contentScript' })
+    }
     
     setSafe(proxySafe);
   };
