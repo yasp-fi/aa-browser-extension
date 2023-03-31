@@ -78,7 +78,7 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={swapSvg}
         roundButtonIconAlt={'Swap Icon'}
         actionText={'Swap'}
-        onActionClick={() => navigate('/receive')}
+        onActionClick={() => window.open('https://swap.cow.fi/#/1/swap/ETH', "_blank")}
       />
       <Action
         roundButtonIconSrc={sendSvg}

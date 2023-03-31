@@ -54,10 +54,10 @@ export const OnboardingScreen: React.FC = () => {
           showStatus={false}
           showThumbs={false}
           showIndicators={false}
-          interval={5000}
+          interval={1000}
           onChange={(index: number) => setSelectedIndex(index)}
           dynamicHeight={false}
-          autoPlay={false}
+          autoPlay
           stopOnHover
           swipeable
           emulateTouch
@@ -85,9 +85,8 @@ const OnboardingCarouselItem: React.FC<{
   const navigate = useNavigate();
 
   const onGetStartedClick = useCallback(() => {
-    navigate('/start');
-    
     localStorage.setItem('isOnboardingCompleted', '1');
+    return navigate('/start');
   }, [navigate]);
 
   return (
