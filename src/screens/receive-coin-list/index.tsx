@@ -14,6 +14,7 @@ import { AddressQRCode } from '../../components/address-qr-code';
 import { getYaspApiStaticSrc } from '../../utils/get-yasp-api-static-src';
 import { useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 import { useNavigate } from 'react-router';
+import {UserHeader} from "components/user-header";
 
 export const ReceiveCoinListScreen: React.FC = () => {
     const theme = useTheme();
@@ -21,7 +22,6 @@ export const ReceiveCoinListScreen: React.FC = () => {
     const {safe} = useWeb3Auth();
     const navigate = useNavigate();
 
-  // replace with business logic
   const userAddress = safe?.address || '';
 
   return (

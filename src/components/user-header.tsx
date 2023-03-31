@@ -4,6 +4,8 @@ import {Row} from "components/layout/flex";
 import {Icon} from "components/icon";
 import {getYaspApiStaticSrc} from "../utils/get-yasp-api-static-src";
 import {Bold16x24} from "components/typography";
+import settingsIcon from "assets/icons/settings.svg";
+import copyIcon from "assets/icons/copy.svg";
 
 
 
@@ -17,11 +19,27 @@ export const shortenAddress = (address: string) => {
 
 export const UserHeader: React.FC<UserHeaderProps>  = ({ userAddress }) => {
     return (
-        <UserHeaderContainer alignItems={'center'} gap={'12px'} width={'100%'}>
+        <UserHeaderContainer alignItems={'center'} gap={'12px'} width={'calc(100% - 32px)'}>
             <Icon size={32} src={getYaspApiStaticSrc('ethereum-32px', 'chain')} alt={'Ethereum blockchain logo'} />
             <Bold16x24>
                 {shortenAddress(userAddress)}
             </Bold16x24>
+
+            <Icon
+                margin={'0 0 0 auto'}
+                src={copyIcon}
+                alt={'Copy Icon'}
+                onClick={() => {
+                    return;
+                }}
+            />
+            <Icon
+                src={settingsIcon}
+                alt={'Settings Icon'}
+                onClick={() => {
+                    return;
+                }}
+            />
         </UserHeaderContainer>
     )
 }

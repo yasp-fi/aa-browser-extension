@@ -10,6 +10,7 @@ import receiveSvg from 'assets/icons/add.svg';
 import buySvg from 'assets/icons/credit-card.svg';
 import swapSvg from 'assets/icons/trade.svg';
 import sendSvg from 'assets/icons/send.svg';
+import {TRANSAK_FIAT} from "../../constants/urls";
 
 type ActionProps = {
   roundButtonIconSrc: string;
@@ -69,7 +70,7 @@ export const OverviewActions: React.FC = () => {
         roundButtonIconSrc={buySvg}
         roundButtonIconAlt={'Buy Icon'}
         actionText={'Buy'}
-        onActionClick={() => window.open('https://changelly.com/buy-crypto', '_blank')}
+        onActionClick={() => window.open(TRANSAK_FIAT, '_blank')}
       />
       <Action
         roundButtonBg={theme.palette.mediumDarkBlue}

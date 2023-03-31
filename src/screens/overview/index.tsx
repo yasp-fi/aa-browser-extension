@@ -16,6 +16,7 @@ import { YASP_FI_INVESTMENTS_DASHBOARD_URL } from '../../constants/urls';
 import { useWeb3Auth } from '../../libs/hooks/use-web3-auth';
 import { getSafeUSDBalance, TokenBalance } from '../../libs/safe-service';
 import {BuyCryptoBanner} from "./buy-crypto-banner";
+import {UserHeader} from "components/user-header";
 
 export const OverviewScreen: React.FC = () => {
   const openInvestments = () => {
@@ -39,18 +40,8 @@ export const OverviewScreen: React.FC = () => {
 
   return (
     <OverviewScreenLayout>
+      <UserHeader userAddress={safe?.address || ''} />
       <Column padding={'16px'} gap={'12px'}>
-        <Row alignItems={'center'} justifyContent={'space-between'}>
-          <Bold18x27>Overview</Bold18x27>
-
-          <Icon
-            src={settingsIcon}
-            alt={'Settings Icon'}
-            onClick={() => {
-              return;
-            }}
-          />
-        </Row>
 
         <Row alignItems={'center'} justifyContent={'center'}>
           <BalanceSphere balance={totalUsdBalance} colors={['#2AB0FD']} pnlPercentage={10.6453} />
