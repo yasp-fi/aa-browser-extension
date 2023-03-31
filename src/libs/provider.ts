@@ -96,7 +96,7 @@ export class YaspSafeProvider {
     this.engine.setMaxListeners(0);
 
     // Metamask methods are temporary. Must be deleted in the future.
-    this.engine.isMetaMask = !0;
+    this.engine.isMetaMask = true;
     this.engine._metamask = {
       isApproved: () => true,
       isUnlocked: () => true,
@@ -107,6 +107,7 @@ export class YaspSafeProvider {
       name: 'SafeWeb3Provider',
     };
     this.engine.isSafe = true;
+    this.engine.chainId = '0x5';
     this.engine.isConnected = function() {
       return true;
     };

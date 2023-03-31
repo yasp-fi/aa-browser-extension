@@ -49,7 +49,7 @@ export const useWeb3Auth = () => {
 
   const initWallet = async () => {
     if (!provider) return;
-    
+
     const privateKey = await provider.request({
       method: 'eth_private_key',
     });
@@ -61,11 +61,14 @@ export const useWeb3Auth = () => {
     const ethLibAdapter = new EthersAdapter({ ethers, signer: ownerWallet });
     const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
 
-
     if (chrome) {
-      await chrome.runtime.sendMessage({ type: 'SET_SAFE_CPK', payload: await ownerWallet.getAddress(), target: 'contentScript' })
+      await chrome.runtime.sendMessage({
+        type: 'SET_SAFE_CPK',
+        payload: proxySafe.address,
+        target: 'contentScript',
+      });
     }
-    
+
     setSafe(proxySafe);
   };
 
