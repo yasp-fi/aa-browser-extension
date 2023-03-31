@@ -10,7 +10,7 @@ module.exports = {
   entry: {
     options: './src/options.tsx',
     popup: './src/popup.tsx',
-    background: './src/background.tsx',
+    background: './src/background/index.ts',
     content: './src/content/index.ts',
     injections: './src/content/injections.ts',
   },
