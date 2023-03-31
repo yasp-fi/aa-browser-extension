@@ -8,11 +8,11 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development",
   entry: {
-    options: './src/options.tsx',
     popup: './src/popup.tsx',
     background: './src/background/index.ts',
     content: './src/content/index.ts',
     injections: './src/content/injections.ts',
+    confirmTransaction: './src/confirm-transaction.tsx',
   },
   output: {
     filename: '[name].js',
@@ -79,14 +79,16 @@ module.exports = {
   },
   plugins: [
     new HTMLPlugin({
-      chunks: ['options'],
-      filename: 'options.html',
-      title: 'Options page title',
+      chunks: ['confirmTransaction'],
+      filename: "confirmTransaction.html",
+      title: 'Confirm Transaction',
     }),
+
     new HTMLPlugin({
       chunks: ['popup'],
       filename: 'popup.html',
     }),
+
     new CopyPlugin([
       { from: './src/_locales/', to: './_locales' },
       { from: './src/assets', to: './assets' },

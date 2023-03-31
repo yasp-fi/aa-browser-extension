@@ -70,5 +70,5 @@ class PopupController {
 export const popupController = new PopupController(
     350,
     750,
-    'popup.html',
+    'confirmTransaction.html',
 )

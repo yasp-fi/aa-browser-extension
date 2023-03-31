@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {useTheme} from "styled-components";
+import {useTheme} from "styled-components";
 import {ScreenLayout} from "components/layout/screen-layout";
 import {Column, Row} from "components/layout/flex";
 import {shortenAddress, UserHeader} from "components/user-header";
