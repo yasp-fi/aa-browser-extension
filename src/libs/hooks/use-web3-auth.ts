@@ -5,6 +5,7 @@ import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 import CPK, { EthersAdapter } from 'contract-proxy-kit';
 import { CHAIN_NAMESPACES, EVM_ADAPTERS } from '@web3auth/base';
 import { GOERLI_RPC_URL } from '../../constants/urls';
+import { ethereumProvider } from '../../content/injections';
 
 export enum LoginProviders {
   Google = 'google',
@@ -59,6 +60,7 @@ export const useWeb3Auth = () => {
 
     const ethLibAdapter = new EthersAdapter({ ethers, signer: ownerWallet });
     const proxySafe = await CPK.create({ ethLibAdapter: ethLibAdapter });
+    
     setSafe(proxySafe);
   };
 
