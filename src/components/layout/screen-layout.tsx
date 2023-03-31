@@ -6,11 +6,10 @@ import {useLocation} from "react-router";
 
 export const ScreenLayoutWrapper = styled.main<{ bgColor?: string; }>`
   width: 350px;
-  height: 750px;
-  overflow-y: auto;
+  height: 600px;
+  /* overflow-y: hidden; */
   position: relative;
   box-sizing: border-box;
-  background-color: ${({ bgColor, theme }) => bgColor || theme.palette.background };
 `;
 
 

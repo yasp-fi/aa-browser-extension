@@ -4,9 +4,9 @@ import React from 'react';
 export const GlobalStyle = createGlobalStyle`
   body {
     overscroll-behavior-y: none;
-    overflow: auto;
     //scroll-behavior: smooth;
     box-sizing: border-box;
+    background-color: ${({ theme }) => theme.palette.background };
     font-family: 'Poppins', sans-serif;
     font-style: normal;
     margin: 0;
@@ -19,5 +19,5 @@ export const GlobalStyle = createGlobalStyle`
     width: 0px;
     height: 0px;
     background-color: transparent;
-  }
+  } 
 `;
