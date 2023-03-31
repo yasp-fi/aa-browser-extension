@@ -1,0 +1,1 @@
+# YaspFi Smart wallet
