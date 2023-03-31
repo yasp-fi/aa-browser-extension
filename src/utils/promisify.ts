@@ -1,4 +1,4 @@
-export type CallbackFunction = (err: Error, result: any) => void;
+export type CallbackFunction = (err: Error | null, result?: any) => void;
 export const promisify = (inner: (cb: CallbackFunction) => void) =>
   new Promise((resolve, reject) =>
     inner((err, res) => {
