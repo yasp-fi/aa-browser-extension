@@ -7,6 +7,7 @@
     "storage",
     "unlimitedStorage",
     "alarms",
+    "scripting",
     "tabs"
   ],
   "minimum_chrome_version": "100",
@@ -32,6 +33,17 @@
       "js": [
         "content.js"
       ]
+    },
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "contentscript.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
     }
   ],
   "icons": {

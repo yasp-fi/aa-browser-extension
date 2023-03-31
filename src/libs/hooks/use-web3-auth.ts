@@ -1,9 +1,10 @@
-import { CHAIN_NAMESPACES, EVM_ADAPTERS, SafeEventEmitterProvider } from '@web3Auth/base';
 import { Web3AuthNoModal } from '@web3auth/no-modal';
 import { useEffect, useState } from 'react';
 import { ethers, Wallet } from 'ethers';
 import { OpenloginAdapter } from '@web3auth/openlogin-adapter';
 import CPK, { EthersAdapter } from 'contract-proxy-kit';
+import { CHAIN_NAMESPACES, EVM_ADAPTERS } from '@web3auth/base';
+import { GOERLI_RPC_URL } from '../../constants/urls';
 
 export enum LoginProviders {
   Google = 'google',
@@ -16,28 +17,13 @@ export enum LoginProviders {
 const clientId =
   'BL_dlZ28ZDs4Gmt-8VpEhafnlkbhtFOfnsdQXpZOjyInEhjwRVfeZnOCUvyvQEz88c26tmx8nI2byncb026W1qc';
 
-const OPTIONS = {
-  chainConfig: {
-    chainNamespace: CHAIN_NAMESPACES.EIP155,
-    chainId: '0x5',
-    rpcTarget: 'https://rpc.ankr.com/eth_goerli',
-    displayName: 'Ethereum Goerli Testnet',
-    blockExplorer: 'https://goerli.etherscan.io',
-    ticker: 'ETH',
-    tickerName: 'Ethereum',
-  },
-  web3AuthNetwork: 'testnet',
-  clientId,
-  enableLogging: false,
-};
-
 const buildWeb3Auth = () => {
   const auth = new Web3AuthNoModal({
     clientId,
     chainConfig: {
       chainNamespace: CHAIN_NAMESPACES.EIP155,
       chainId: '0x5',
-      rpcTarget: 'https://rpc.ankr.com/eth_goerli',
+      rpcTarget: GOERLI_RPC_URL,
     },
     web3AuthNetwork: 'testnet',
   });
@@ -55,17 +41,19 @@ export enum AuthStatus {
 
 export const useWeb3Auth = () => {
   const [web3Auth, setWeb3Auth] = useState<Web3AuthNoModal | null>(null);
-  const [provider, setProvider] = useState<SafeEventEmitterProvider | null>(null);
+  const [provider, setProvider] = useState<any | null>(null);
   const [wallet, setWallet] = useState<Wallet | null>(null);
   const [safe, setSafe] = useState<CPK | null>(null);
   const [status, setStatus] = useState<AuthStatus>(AuthStatus.Loading);
 
   const initWallet = async () => {
-    const privateKey = await provider!.request<string>({
+    if (!provider) return;
+    
+    const privateKey = await provider.request({
       method: 'eth_private_key',
     });
 
-    const browserProvider = new ethers.providers.Web3Provider(provider!);
+    const browserProvider = new ethers.providers.Web3Provider(provider);
     const ownerWallet = new Wallet(privateKey!).connect(browserProvider);
     setWallet(ownerWallet);
 
