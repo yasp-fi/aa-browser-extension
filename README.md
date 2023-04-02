@@ -1,9 +1,26 @@
+![YaspFi Logo](./docs/repo-picture.png)
+
 # YaspFi Browser Extension (Account Abstraction)
 
 [YaspFi](http://yasp.fi/) is an all-in-one next-generation non-custodial wallet focused on DeFi.
 With YaspFi you can store, invest and exchange your funds on multiple networks without ever worrying about losing access. In addition, [YaspFi](http://yasp.fi/) provides comprehensive analytics and risk assessment score to help users make data-based investment decisions.
 
 Our mission is to make decentralized finance more user-friendly, transparent, and accessible to a wider audience.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Clone the Repository](#clone-the-repository)
+    - [Install Dependencies](#install-dependencies)
+    - [Build the Extension](#build-the-extension)
+- [Load the Extension into Your Browser](#load-the-extension-into-your-browser)
+    - [Google Chrome](#google-chrome)
+    - [Other Browsers](#other-browsers)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
