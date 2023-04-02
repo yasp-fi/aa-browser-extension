@@ -25,32 +25,32 @@ Make sure you have the following installed:
 
 Clone the repository from GitHub:
 
-\```bash
+```bash
 git clone https://github.com/yasp-fi/aa-browser-extension.git
-\```
+```
 
 ### Install Dependencies
 
 Navigate to the project directory and install the required dependencies using Yarn:
 
-\```bash
+```bash
 cd aa-browser-extension
 yarn install
-\```
+```
 
 ### Build the Extension
 
 Build the extension for production:
 
-\```bash
+```bash
 yarn build
-\```
+```
 
 Or build the extension for development and watch for changes:
 
-\```bash
+```bash
 yarn watch
-\```
+```
 
 The built extension will be located in the `dist` folder.
 
