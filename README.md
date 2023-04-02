@@ -69,7 +69,7 @@ Or build the extension for development and watch for changes:
 yarn watch
 ```
 
-The built extension will be located in the `dist` folder.
+The built extension will be located in the `build` folder.
 
 ## Load the Extension into Your Browser
 
@@ -77,7 +77,7 @@ The built extension will be located in the `dist` folder.
 
 1. Open Chrome and navigate to `chrome://extensions/`.
 2. Enable "Developer mode" using the toggle in the top right corner.
-3. Click "Load unpacked" and select the `dist` folder in the project directory.
+3. Click "Load unpacked" and select the `build` folder in the project directory.
 
 ### Other Browsers
 
